@@ -1,0 +1,7 @@
+deviceName,deviceIp,deviceType,authGroup,authGroupName,authGroupUser,authGroupPw
+n9kv-1,172.16.14.101,nxos,dev-creds,dev-creds,admin,REVWUEBzc3cwcmQ=
+n9kv-2,172.16.14.102,nxos,dev-creds,,,
+n9kv-3,172.16.14.103,nxos,dev-creds,,,
+n9kv-4,172.16.14.104,nxos,dev-creds,,,
+sandbox-apic-01,172.20.104.7,aci,dev-creds,,,
+apic-sim,172.0.1.101,aci,dev-creds,,,

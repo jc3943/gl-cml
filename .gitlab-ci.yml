@@ -1,0 +1,23 @@
+stages:
+  - prepUbuntuVm
+  - addDevicesNso
+
+image: jc3943/ubuntu:5.30.22
+
+variables:
+  varPath: vars/$CI_COMMIT_REF_NAME
+
+
+prepUbuntuVm:
+  stage: cprepUbuntuVm
+  script:
+    - ansible-playbook -i creds/ubuntu-inv nso/ubuntuDocker.yml -u cisco 
+  only:
+    - master
+
+addDevicesNso:
+  stage: addDevicesNso
+  script:
+    - ansible-playbook -i localhost nso/nsoAddDevices.yml
+  only:
+    - master
