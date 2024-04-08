@@ -19,6 +19,11 @@ RUN apt-get update
 RUN apt install sshpass -y
 RUN apt-get install git -y
 RUN apt-get install python3-pip -y
+RUN pip3 install flask
+RUN pip3 install flask-restx
+RUN pip3 install click
+RUN pip3 install netmiko
+RUN pip3 install hvac
 RUN pip3 install --upgrade pip
 RUN pip3 install --upgrade ansible
 RUN ansible-galaxy collection install cisco.aci

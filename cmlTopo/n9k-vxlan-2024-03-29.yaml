@@ -1,0 +1,3051 @@
+annotations:
+  - border_color: '#808080FF'
+    border_style: ''
+    color: '#FFFFFFFF'
+    line_end: null
+    line_start: null
+    thickness: 1
+    type: line
+    x1: -560.0
+    y1: 240.0
+    x2: -560.0
+    y2: 240.0
+    z_index: 0
+  - border_color: '#808080FF'
+    border_style: ''
+    color: '#FFFFFFFF'
+    line_end: null
+    line_start: null
+    thickness: 1
+    type: line
+    x1: -80.0
+    y1: 40.0
+    x2: -80.0
+    y2: 40.0
+    z_index: 1
+  - border_color: '#808080FF'
+    border_style: ''
+    color: '#FFFFFFFF'
+    line_end: null
+    line_start: null
+    thickness: 1
+    type: line
+    x1: -280.0
+    y1: 240.0
+    x2: -280.0
+    y2: 240.0
+    z_index: 3
+nodes:
+  - boot_disk_size: null
+    configuration: |2-
+
+      !Command: show running-config
+      !Running configuration last done at: Tue Jan  9 19:34:08 2024
+      !Time: Tue Jan  9 19:34:08 2024
+
+      version 10.3(1) Bios:version
+      hostname n9kv-1
+      vdc n9kv-1 id 1
+        limit-resource vlan minimum 16 maximum 4094
+        limit-resource vrf minimum 2 maximum 4096
+        limit-resource port-channel minimum 0 maximum 511
+        limit-resource m4route-mem minimum 58 maximum 58
+        limit-resource m6route-mem minimum 8 maximum 8
+
+      feature nxapi
+      nv overlay evpn
+      feature ospf
+      feature bgp
+      feature pim
+      feature lldp
+      feature nv overlay
+      feature ngoam
+      feature telemetry
+
+      no password strength-check
+      username admin password 5 $5$OEAJGG$kuv7mLR35ipjVlTAGOLXddBws1vJKk4hqdyIh0RnoY5  role network-admin
+      username cisco password 5 $5$FGIAPE$WuFvEwME46uBoLec4dEeoUUUD6HuenytKS9I0hHmwC1  role network-admin
+      username cisco passphrase  lifetime 99999 warntime 14 gracetime 3
+      ip domain-lookup
+      copp profile strict
+      snmp-server user admin network-admin auth md5 52323A739B9CAAFD71DC4B214F2E529DDD1D priv aes-128 37522B7793B6EEF82A9B607A4E256188F929 localizedV2key
+      snmp-server user cisco network-admin auth md5 5223C45571CE6E27736AA029DA0E66E6FD53 priv aes-128 4946B5625BA91D0B7A2FC538CD2338A0E407 localizedV2key
+      snmp-server host 172.20.104.99 traps version 2c public udp-port 2162
+      rmon event 1 log trap public description FATAL(1) owner PMON@FATAL
+      rmon event 2 log trap public description CRITICAL(2) owner PMON@CRITICAL
+      rmon event 3 log trap public description ERROR(3) owner PMON@ERROR
+      rmon event 4 log trap public description WARNING(4) owner PMON@WARNING
+      rmon event 5 log trap public description INFORMATION(5) owner PMON@INFO
+      ntp server 172.20.1.254 use-vrf management
+
+      ipv6 switch-packets lla
+      ip pim rp-address 10.254.254.1 group-list 239.1.1.0/25
+      ip pim ssm range 232.0.0.0/8
+      ip pim anycast-rp 10.254.254.1 10.2.0.1
+      ip pim anycast-rp 10.254.254.1 10.2.0.2
+      vlan 1
+
+      vrf context management
+        ip name-server 172.16.10.100
+        ip route 0.0.0.0/0 172.16.14.254
+      ngoam install acl
+
+      nxapi http port 80
+
+
+      interface Ethernet1/1
+        description connected-to-n9kv-4-Ethernet1/1
+        no switchport
+        mtu 9216
+        ip address 10.4.0.9/30
+        ip ospf network point-to-point
+        ip router ospf UNDERLAY area 0.0.0.0
+        ip pim sparse-mode
+        no shutdown
+
+      interface Ethernet1/2
+        description connected-to-n9kv-3-Ethernet1/1
+        no switchport
+        mtu 9216
+        ip address 10.4.0.17/30
+        ip ospf network point-to-point
+        ip router ospf UNDERLAY area 0.0.0.0
+        ip pim sparse-mode
+        no shutdown
+
+      interface Ethernet1/3
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/4
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/5
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/6
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/7
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/8
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/9
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/10
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/11
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/12
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/13
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/14
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/15
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/16
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/17
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/18
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/19
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/20
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/21
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/22
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/23
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/24
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/25
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/26
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/27
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/28
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/29
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/30
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/31
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/32
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/33
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/34
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/35
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/36
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/37
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/38
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/39
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/40
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/41
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/42
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/43
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/44
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/45
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/46
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/47
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/48
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/49
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/50
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/51
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/52
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/53
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/54
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/55
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/56
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/57
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/58
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/59
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/60
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/61
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/62
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/63
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/64
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface mgmt0
+        vrf member management
+        ip address 172.16.14.101/24
+
+      interface loopback0
+        description Routing loopback interface
+        ip address 10.2.0.1/32
+        ip router ospf UNDERLAY area 0.0.0.0
+        ip pim sparse-mode
+
+      interface loopback254
+        description RP loopback interface
+        ip address 10.254.254.1/32
+        ip router ospf UNDERLAY area 0.0.0.0
+        ip pim sparse-mode
+      icam monitor scale
+
+      line console
+        exec-timeout 0
+      line vty
+        exec-timeout 0
+      boot nxos bootflash:/nxos64-cs.10.3.1.F.bin
+      router ospf UNDERLAY
+        router-id 10.2.0.1
+      router bgp 65100
+        router-id 10.2.0.1
+        neighbor 10.2.0.3
+          remote-as 65100
+          update-source loopback0
+          address-family l2vpn evpn
+            send-community
+            send-community extended
+            route-reflector-client
+        neighbor 10.2.0.4
+          remote-as 65100
+          update-source loopback0
+          address-family l2vpn evpn
+            send-community
+            send-community extended
+            route-reflector-client
+
+      no logging console
+
+      telemetry
+        destination-profile
+          use-vrf default
+          source-interface loopback0
+        destination-group 500
+          ip address 172.16.114.94 port 57500 protocol gRPC encoding GPB
+        destination-group 501
+          ip address 172.16.114.94 port 57500 protocol gRPC encoding GPB-compact
+        sensor-group 500
+          data-source NX-API
+          path "show icam scale" depth unbounded
+          path "show module" depth unbounded
+          path "show processes cpu" depth unbounded
+          path "show processes log" depth unbounded
+          path "show processes memory physical" depth unbounded
+          path "show spanning-tree summary" depth unbounded
+        sensor-group 501
+          data-source NX-API
+          path "show clock" depth unbounded
+          path "show epbr policy" depth unbounded
+          path "show feature" depth unbounded
+          path "show ip arp" depth unbounded
+          path "show ip interface brief VRF all" depth unbounded
+          path "show ipv6 interface brief VRF all" depth unbounded
+          path "show itd br" depth unbounded
+          path "show lacp counters detail" depth unbounded
+          path "show lacp interface" depth unbounded
+          path "show lldp traffic interface all" depth unbounded
+          path "show port-channel summary" depth unbounded
+          path "show system internal flash" depth unbounded
+        sensor-group 502
+          data-source DME
+          path sys/ch depth unbounded query-condition query-target=subtree&target-subtree-class=eqptPsu
+          path sys/intf query-condition query-target=subtree&target-subtree-class=l1PhysIf&query-target-filter=eq(l1PhysIf.adminSt,"up")&rsp-subtree=children&target-subtree-class=ethpmPhysIf&query-target-filter=eq(ethpmPhysIf.operSt,"up")&rsp-subtree-depth=2&rsp-ancestor-depth=1
+          path sys/ipqos depth unbounded query-condition query-target=subtree&target-subtree-class=ipqosQueuingStats&query-target-filter=or(ne(ipqosQueuingStats.pfcRxPpp,"0"),ne(ipqosQueuingStats.pfcTxPpp,"0"),ne(ipqosQueuingStats.randEcnMarkedPackets,"0"))
+        sensor-group 503
+          data-source DME
+          path sys query-condition query-target=subtree&target-subtree-class=l3Inst
+          path sys/ch depth 1 query-condition query-target=subtree&target-subtree-class=eqptSensor
+          path sys/intf query-condition query-target=subtree&target-subtree-class=eqptFcotLane,eqptFcotSensor
+        sensor-group 504
+          data-source DME
+          path sys/ch depth 1 query-condition query-target=subtree&target-subtree-class=eqptFan
+          path sys/vpc depth unbounded query-condition query-target=subtree&target-subtree-class=vpcDom,vpcIf,vpcPeerLink,vpcRsVpcConf
+        sensor-group 505
+          data-source NX-API
+          path "show nve peers detail" depth unbounded
+          path "show nve vni" depth unbounded
+          path "show system internal icam app hardware internal forwarding table utilization" depth unbounded query-condition show-output-format=json
+          path "show system internal icam app system internal access-list resource utilization" depth unbounded query-condition show-output-format=json
+        sensor-group 506
+          data-source NX-API
+          path "show system routing mode" depth unbounded
+        sensor-group 507
+          data-source DME
+          path sys/bgp depth 1 query-condition query-target=subtree&target-subtree-class=bgpPeerEntryStats,bgpPeerAfEntry
+          path sys/cdp depth 1 query-condition query-target=subtree&target-subtree-class=cdpIf,cdpIfStats,cdpAdjEp
+          path sys/lldp depth 1 query-condition query-target=subtree&target-subtree-class=lldpIf,lldpAdjEp,lldpIfStats
+          path sys/pim/pimdomdb query-condition rsp-subtree=full&rsp-foreign-subtree=ephemeral
+          path sys/pim/pimifdb-stats query-condition rsp-subtree=full&rsp-foreign-subtree=ephemeral
+        sensor-group 508
+          data-source DME
+          path sys/cdp depth 1 query-condition query-target=subtree&target-subtree-class=cdpIf,cdpAdjEp,cdpInst
+        sensor-group 509
+          data-source DME
+          path sys/bgp depth unbounded query-condition query-target=subtree&complete-mo=yes&notify-interval=1&target-subtree-class=bgpEntity,bgpInst,bgpDom,bgpDomAf,bgpPeer,bgpPeerEntry,bgpPeerEvents
+        sensor-group 510
+          data-source DME
+          path sys/intf depth unbounded query-condition query-target=subtree&target-subtree-class=pcAggrIf&query-target-filter=deleted()
+        sensor-group 511
+          data-source DME
+          path sys/ch depth unbounded query-condition query-target=subtree&complete-mo=yes&notify-interval=1&target-subtree-class=eqptLC,eqptSupC,eqptFtSlot,eqptFt,eqptPsuSlot,eqptFan
+        sensor-group 512
+          data-source DME
+          path sys/ch depth unbounded query-condition query-target=subtree&target-subtree-class=eqptPsu&query-target-filter=or(and(updated(eqptPsu.operSt),eq(eqptPsu.operSt,"ok")),and(updated(eqptPsu.operSt),ne(eqptPsu.operSt,"ok")))
+        sensor-group 513
+          data-source NX-API
+          path "show ip igmp snooping" depth unbounded
+          path "show ip igmp snooping groups" depth unbounded
+          path "show ip igmp snooping groups detail" depth unbounded
+          path "show ip igmp snooping groups summary" depth unbounded
+          path "show ip igmp snooping statistics" depth unbounded
+        sensor-group 514
+          data-source NX-API
+          path "show queuing burst-detect detail" depth unbounded
+        sensor-group 515
+          data-source NATIVE
+          path adjacency
+          path mac-all
+        sensor-group 516
+          data-source NATIVE
+          path rib
+        sensor-group 517
+          data-source DME
+          path sys/intf depth unbounded query-condition query-target=subtree&target-subtree-class=ethpmAggrIf
+        sensor-group 518
+          data-source NX-API
+          path "show system resources" depth unbounded
+        sensor-group 519
+          data-source DME
+          path sys/pim depth unbounded query-condition query-target=subtree&complete-mo=yes&notify-interval=1&target-subtree-class=pimRPGrange,pimRPInfo,pimIf
+        sensor-group 520
+          data-source DME
+          path sys/pim/pimifdb-adj query-condition query-target=subtree&complete-mo=yes
+        sensor-group 521
+          data-source DME
+          path sys/pim/pimifdb-prop query-condition query-target=subtree&complete-mo=yes
+        sensor-group 522
+          data-source DME
+          path sys/pim/inst/routedb-route query-condition query-target=subtree&complete-mo=yes
+        sensor-group 523
+          data-source DME
+          path sys/igmp/igmpifdb-stats query-condition rsp-subtree=full&rsp-foreign-subtree=ephemeral
+        sensor-group 524
+          data-source DME
+          path sys/igmp/igmpifdb-prop query-condition query-target=subtree&complete-mo=yes
+        sensor-group 525
+          data-source DME
+          path sys/igmp/inst/routedb query-condition query-target=subtree&complete-mo=yes
+        sensor-group 526
+          data-source DME
+          path sys/intf query-condition query-target=subtree&target-subtree-class=ethpmPhysIf
+        sensor-group 527
+          data-source DME
+          path sys/vpc depth unbounded query-condition query-target=subtree&target-subtree-class=vpcIf,vpcRsVpcConf&query-target-filter=updated(vpcIf.localOperSt)
+        sensor-group 528
+          data-source DME
+          path sys/ipv4 query-condition query-target=subtree&target-subtree-class=ipv4If
+        sensor-group 529
+          data-source DME
+          path sys/intf depth unbounded query-condition query-target=subtree&target-subtree-class=sviIf
+        sensor-group 530
+          data-source DME
+          path sys/accounting/log query-condition query-target=subtree&complete-mo=yes&notify-interval=1
+        sensor-group 531
+          data-source DME
+          path sys/intf query-condition query-target=subtree&target-subtree-class=pcAggrIf&rsp-subtree=children
+        subscription 500
+          dst-grp 500
+          snsr-grp 500 sample-interval 59000
+          snsr-grp 501 sample-interval 300000
+          snsr-grp 502 sample-interval 60000
+          snsr-grp 503 sample-interval 302000
+          snsr-grp 504 sample-interval 301000
+          snsr-grp 505 sample-interval 301000
+          snsr-grp 506 sample-interval 3600000
+          snsr-grp 507 sample-interval 305000
+          snsr-grp 508 sample-interval 0
+          snsr-grp 509 sample-interval 0
+          snsr-grp 510 sample-interval 0
+          snsr-grp 511 sample-interval 0
+          snsr-grp 512 sample-interval 0
+          snsr-grp 513 sample-interval 303000
+          snsr-grp 514 sample-interval 60000
+          snsr-grp 517 sample-interval 0
+          snsr-grp 518 sample-interval 64000
+          snsr-grp 519 sample-interval 0
+          snsr-grp 520 sample-interval 0
+          snsr-grp 521 sample-interval 0
+          snsr-grp 522 sample-interval 0
+          snsr-grp 523 sample-interval 306000
+          snsr-grp 524 sample-interval 0
+          snsr-grp 525 sample-interval 0
+          snsr-grp 526 sample-interval 0
+          snsr-grp 527 sample-interval 0
+          snsr-grp 528 sample-interval 0
+          snsr-grp 529 sample-interval 0
+          snsr-grp 530 sample-interval 0
+          snsr-grp 531 sample-interval 61000
+        subscription 501
+          dst-grp 501
+          snsr-grp 515 sample-interval 0
+          snsr-grp 516 sample-interval 0
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n0
+    image_definition: null
+    label: n9kv-1
+    node_definition: nxosv9000
+    ram: null
+    tags: []
+    x: -320
+    y: 160
+    interfaces:
+      - id: i0
+        label: Loopback0
+        type: loopback
+      - id: i1
+        label: mgmt0
+        slot: 0
+        type: physical
+      - id: i2
+        label: Ethernet1/1
+        slot: 1
+        type: physical
+      - id: i3
+        label: Ethernet1/2
+        slot: 2
+        type: physical
+      - id: i4
+        label: Ethernet1/3
+        slot: 3
+        type: physical
+  - boot_disk_size: null
+    configuration: |2-
+
+      !Command: show running-config
+      !Running configuration last done at: Tue Jan  9 19:34:08 2024
+      !Time: Tue Jan  9 19:34:09 2024
+
+      version 10.3(1) Bios:version
+      hostname n9kv-3
+      vdc n9kv-3 id 1
+        limit-resource vlan minimum 16 maximum 4094
+        limit-resource vrf minimum 2 maximum 4096
+        limit-resource port-channel minimum 0 maximum 511
+        limit-resource m4route-mem minimum 58 maximum 58
+        limit-resource m6route-mem minimum 8 maximum 8
+
+      feature nxapi
+      cfs eth distribute
+      nv overlay evpn
+      feature ospf
+      feature bgp
+      feature pim
+      feature interface-vlan
+      feature vn-segment-vlan-based
+      feature lacp
+      feature dhcp
+      feature vpc
+      feature lldp
+      feature nv overlay
+      feature ngoam
+      feature telemetry
+
+      no password strength-check
+      username admin password 5 $5$IEMHPN$6SxKlQGRqqx/Kdsoia0EqTfutlVZp9V1h5oFibSW6M0  role network-admin
+      username cisco password 5 $5$OEOGGE$ygEvQlnKlKnNyymjEySlIVvJ3OJhOuo4XfyXAq/aOf1  role network-admin
+      username cisco passphrase  lifetime 99999 warntime 14 gracetime 3
+      ip domain-lookup
+      copp profile strict
+      snmp-server user admin network-admin auth md5 205B7A9BCAA2090F3B905B93B4FC2B022306 priv aes-128 165A5FBC8FC12003218414A8F0BB471F6E0E localizedV2key
+      snmp-server user cisco network-admin auth md5 483AADD26699722289671E84F73398CE3B3E priv aes-128 3743F99D30992467CA010492F470E9986433 localizedV2key
+      snmp-server host 172.20.104.99 traps version 2c public udp-port 2162
+      rmon event 1 log trap public description FATAL(1) owner PMON@FATAL
+      rmon event 2 log trap public description CRITICAL(2) owner PMON@CRITICAL
+      rmon event 3 log trap public description ERROR(3) owner PMON@ERROR
+      rmon event 4 log trap public description WARNING(4) owner PMON@WARNING
+      rmon event 5 log trap public description INFORMATION(5) owner PMON@INFO
+      ntp server 172.20.1.254 use-vrf management
+
+      fabric forwarding anycast-gateway-mac 2020.0000.00aa
+      ipv6 switch-packets lla
+      ip pim rp-address 10.254.254.1 group-list 239.1.1.0/25
+      ip pim ssm range 232.0.0.0/8
+      vlan 1,3600
+
+      route-map fabric-rmap-redist-subnet permit 10
+        match tag 12345
+      service dhcp
+      ip dhcp relay
+      ip dhcp relay information option
+      ip dhcp relay information option vpn
+      ipv6 dhcp relay
+      vrf context management
+        ip name-server 172.16.10.100
+        ip route 0.0.0.0/0 172.16.14.254
+      vpc domain 1
+        peer-switch
+        peer-keepalive destination 172.16.14.104 source 172.16.14.102
+        delay restore 150
+        peer-gateway
+        auto-recovery reload-delay 360
+        ipv6 nd synchronize
+        ip arp synchronize
+      ngoam install acl
+
+      nxapi http port 80
+
+
+      interface Vlan1
+        no ip redirects
+        no ipv6 redirects
+
+      interface Vlan3600
+        description VPC-Peer-Link SVI
+        no shutdown
+        mtu 9216
+        no ip redirects
+        ip address 10.4.0.1/30
+        no ipv6 redirects
+        ip ospf network point-to-point
+        ip router ospf UNDERLAY area 0.0.0.0
+        ip pim sparse-mode
+
+      interface port-channel500
+        description "vpc-peer-link n9kv-3--n9kv-4"
+        switchport mode trunk
+        spanning-tree port type network
+        vpc peer-link
+
+      interface nve1
+        no shutdown
+        host-reachability protocol bgp
+        source-interface loopback1
+
+      interface Ethernet1/1
+        description connected-to-n9kv-1-Ethernet1/2
+        no switchport
+        mtu 9216
+        ip address 10.4.0.18/30
+        ip ospf network point-to-point
+        ip router ospf UNDERLAY area 0.0.0.0
+        ip pim sparse-mode
+        no shutdown
+
+      interface Ethernet1/2
+        description connected-to-n9kv-2-Ethernet1/2
+        no switchport
+        mtu 9216
+        ip address 10.4.0.14/30
+        ip ospf network point-to-point
+        ip router ospf UNDERLAY area 0.0.0.0
+        ip pim sparse-mode
+        no shutdown
+
+      interface Ethernet1/3
+        description "PO 500 (vpc-peer-link) member n9kv-3-Ethernet1/3 to n9kv-4-Ethernet1/3"
+        switchport mode trunk
+        channel-group 500 mode active
+
+      interface Ethernet1/4
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/5
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/6
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/7
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/8
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/9
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/10
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/11
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/12
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/13
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/14
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/15
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/16
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/17
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/18
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/19
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/20
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/21
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/22
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/23
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/24
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/25
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/26
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/27
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/28
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/29
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/30
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/31
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/32
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/33
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/34
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/35
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/36
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/37
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/38
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/39
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/40
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/41
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/42
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/43
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/44
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/45
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/46
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/47
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/48
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/49
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/50
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/51
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/52
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/53
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/54
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/55
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/56
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/57
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/58
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/59
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/60
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/61
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/62
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/63
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/64
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface mgmt0
+        vrf member management
+        ip address 172.16.14.102/24
+
+      interface loopback0
+        description Routing loopback interface
+        ip address 10.2.0.3/32
+        ip router ospf UNDERLAY area 0.0.0.0
+        ip pim sparse-mode
+
+      interface loopback1
+        description VTEP loopback interface
+        ip address 10.3.0.1/32
+        ip address 10.3.0.2/32 secondary
+        ip router ospf UNDERLAY area 0.0.0.0
+        ip pim sparse-mode
+      line console
+        exec-timeout 0
+      line vty
+        exec-timeout 0
+      boot nxos bootflash:/nxos64-cs.10.3.1.F.bin
+      router ospf UNDERLAY
+        router-id 10.2.0.3
+      router bgp 65100
+        router-id 10.2.0.3
+        neighbor 10.2.0.1
+          remote-as 65100
+          update-source loopback0
+          address-family l2vpn evpn
+            send-community
+            send-community extended
+        neighbor 10.2.0.2
+          remote-as 65100
+          update-source loopback0
+          address-family l2vpn evpn
+            send-community
+            send-community extended
+      evpn
+
+      no logging console
+
+      telemetry
+        destination-profile
+          use-vrf default
+          source-interface loopback0
+        destination-group 500
+          ip address 172.16.114.91 port 57500 protocol gRPC encoding GPB
+        destination-group 501
+          ip address 172.16.114.91 port 57500 protocol gRPC encoding GPB-compact
+        sensor-group 500
+          data-source NX-API
+          path "show icam scale" depth unbounded
+          path "show module" depth unbounded
+          path "show processes cpu" depth unbounded
+          path "show processes log" depth unbounded
+          path "show processes memory physical" depth unbounded
+          path "show spanning-tree summary" depth unbounded
+        sensor-group 501
+          data-source NX-API
+          path "show clock" depth unbounded
+          path "show epbr policy" depth unbounded
+          path "show feature" depth unbounded
+          path "show ip arp" depth unbounded
+          path "show ip interface brief VRF all" depth unbounded
+          path "show ipv6 interface brief VRF all" depth unbounded
+          path "show itd br" depth unbounded
+          path "show lacp counters detail" depth unbounded
+          path "show lacp interface" depth unbounded
+          path "show lldp traffic interface all" depth unbounded
+          path "show port-channel summary" depth unbounded
+          path "show system internal flash" depth unbounded
+        sensor-group 502
+          data-source DME
+          path sys/ch depth unbounded query-condition query-target=subtree&target-subtree-class=eqptPsu
+          path sys/intf query-condition query-target=subtree&target-subtree-class=l1PhysIf&query-target-filter=eq(l1PhysIf.adminSt,"up")&rsp-subtree=children&target-subtree-class=ethpmPhysIf&query-target-filter=eq(ethpmPhysIf.operSt,"up")&rsp-subtree-depth=2&rsp-ancestor-depth=1
+          path sys/ipqos depth unbounded query-condition query-target=subtree&target-subtree-class=ipqosQueuingStats&query-target-filter=or(ne(ipqosQueuingStats.pfcRxPpp,"0"),ne(ipqosQueuingStats.pfcTxPpp,"0"),ne(ipqosQueuingStats.randEcnMarkedPackets,"0"))
+        sensor-group 503
+          data-source DME
+          path sys query-condition query-target=subtree&target-subtree-class=l3Inst
+          path sys/ch depth 1 query-condition query-target=subtree&target-subtree-class=eqptSensor
+          path sys/intf query-condition query-target=subtree&target-subtree-class=eqptFcotLane,eqptFcotSensor
+        sensor-group 504
+          data-source DME
+          path sys/ch depth 1 query-condition query-target=subtree&target-subtree-class=eqptFan
+          path sys/vpc depth unbounded query-condition query-target=subtree&target-subtree-class=vpcDom,vpcIf,vpcPeerLink,vpcRsVpcConf
+        sensor-group 505
+          data-source NX-API
+          path "show nve peers detail" depth unbounded
+          path "show nve vni" depth unbounded
+          path "show system internal icam app hardware internal forwarding table utilization" depth unbounded query-condition show-output-format=json
+          path "show system internal icam app system internal access-list resource utilization" depth unbounded query-condition show-output-format=json
+        sensor-group 506
+          data-source NX-API
+          path "show system routing mode" depth unbounded
+        sensor-group 507
+          data-source DME
+          path sys/bgp depth 1 query-condition query-target=subtree&target-subtree-class=bgpPeerEntryStats,bgpPeerAfEntry
+          path sys/cdp depth 1 query-condition query-target=subtree&target-subtree-class=cdpIf,cdpIfStats,cdpAdjEp
+          path sys/lldp depth 1 query-condition query-target=subtree&target-subtree-class=lldpIf,lldpAdjEp,lldpIfStats
+          path sys/pim/pimdomdb query-condition rsp-subtree=full&rsp-foreign-subtree=ephemeral
+          path sys/pim/pimifdb-stats query-condition rsp-subtree=full&rsp-foreign-subtree=ephemeral
+        sensor-group 508
+          data-source DME
+          path sys/cdp depth 1 query-condition query-target=subtree&target-subtree-class=cdpIf,cdpAdjEp,cdpInst
+        sensor-group 509
+          data-source DME
+          path sys/bgp depth unbounded query-condition query-target=subtree&complete-mo=yes&notify-interval=1&target-subtree-class=bgpEntity,bgpInst,bgpDom,bgpDomAf,bgpPeer,bgpPeerEntry,bgpPeerEvents
+        sensor-group 510
+          data-source DME
+          path sys/intf depth unbounded query-condition query-target=subtree&target-subtree-class=pcAggrIf&query-target-filter=deleted()
+        sensor-group 511
+          data-source DME
+          path sys/ch depth unbounded query-condition query-target=subtree&complete-mo=yes&notify-interval=1&target-subtree-class=eqptLC,eqptSupC,eqptFtSlot,eqptFt,eqptPsuSlot,eqptFan
+        sensor-group 512
+          data-source DME
+          path sys/ch depth unbounded query-condition query-target=subtree&target-subtree-class=eqptPsu&query-target-filter=or(and(updated(eqptPsu.operSt),eq(eqptPsu.operSt,"ok")),and(updated(eqptPsu.operSt),ne(eqptPsu.operSt,"ok")))
+        sensor-group 513
+          data-source NX-API
+          path "show ip igmp snooping" depth unbounded
+          path "show ip igmp snooping groups" depth unbounded
+          path "show ip igmp snooping groups detail" depth unbounded
+          path "show ip igmp snooping groups summary" depth unbounded
+          path "show ip igmp snooping statistics" depth unbounded
+        sensor-group 514
+          data-source NX-API
+          path "show queuing burst-detect detail" depth unbounded
+        sensor-group 515
+          data-source NATIVE
+          path adjacency
+          path mac-all
+        sensor-group 516
+          data-source NATIVE
+          path rib
+        sensor-group 517
+          data-source DME
+          path sys/intf depth unbounded query-condition query-target=subtree&target-subtree-class=ethpmAggrIf
+        sensor-group 518
+          data-source NX-API
+          path "show system resources" depth unbounded
+        sensor-group 519
+          data-source DME
+          path sys/pim depth unbounded query-condition query-target=subtree&complete-mo=yes&notify-interval=1&target-subtree-class=pimRPGrange,pimRPInfo,pimIf
+        sensor-group 520
+          data-source DME
+          path sys/pim/pimifdb-adj query-condition query-target=subtree&complete-mo=yes
+        sensor-group 521
+          data-source DME
+          path sys/pim/pimifdb-prop query-condition query-target=subtree&complete-mo=yes
+        sensor-group 522
+          data-source DME
+          path sys/pim/inst/routedb-route query-condition query-target=subtree&complete-mo=yes
+        sensor-group 523
+          data-source DME
+          path sys/igmp/igmpifdb-stats query-condition rsp-subtree=full&rsp-foreign-subtree=ephemeral
+        sensor-group 524
+          data-source DME
+          path sys/igmp/igmpifdb-prop query-condition query-target=subtree&complete-mo=yes
+        sensor-group 525
+          data-source DME
+          path sys/igmp/inst/routedb query-condition query-target=subtree&complete-mo=yes
+        sensor-group 526
+          data-source DME
+          path sys/intf query-condition query-target=subtree&target-subtree-class=ethpmPhysIf
+        sensor-group 527
+          data-source DME
+          path sys/vpc depth unbounded query-condition query-target=subtree&target-subtree-class=vpcIf,vpcRsVpcConf&query-target-filter=updated(vpcIf.localOperSt)
+        sensor-group 528
+          data-source DME
+          path sys/ipv4 query-condition query-target=subtree&target-subtree-class=ipv4If
+        sensor-group 529
+          data-source DME
+          path sys/intf depth unbounded query-condition query-target=subtree&target-subtree-class=sviIf
+        sensor-group 530
+          data-source DME
+          path sys/accounting/log query-condition query-target=subtree&complete-mo=yes&notify-interval=1
+        sensor-group 531
+          data-source DME
+          path sys/intf query-condition query-target=subtree&target-subtree-class=pcAggrIf&rsp-subtree=children
+        subscription 500
+          dst-grp 500
+          snsr-grp 500 sample-interval 59000
+          snsr-grp 501 sample-interval 300000
+          snsr-grp 502 sample-interval 60000
+          snsr-grp 503 sample-interval 302000
+          snsr-grp 504 sample-interval 301000
+          snsr-grp 505 sample-interval 301000
+          snsr-grp 506 sample-interval 3600000
+          snsr-grp 507 sample-interval 305000
+          snsr-grp 508 sample-interval 0
+          snsr-grp 509 sample-interval 0
+          snsr-grp 510 sample-interval 0
+          snsr-grp 511 sample-interval 0
+          snsr-grp 512 sample-interval 0
+          snsr-grp 513 sample-interval 303000
+          snsr-grp 514 sample-interval 60000
+          snsr-grp 517 sample-interval 0
+          snsr-grp 518 sample-interval 64000
+          snsr-grp 519 sample-interval 0
+          snsr-grp 520 sample-interval 0
+          snsr-grp 521 sample-interval 0
+          snsr-grp 522 sample-interval 0
+          snsr-grp 523 sample-interval 306000
+          snsr-grp 524 sample-interval 0
+          snsr-grp 525 sample-interval 0
+          snsr-grp 526 sample-interval 0
+          snsr-grp 527 sample-interval 0
+          snsr-grp 528 sample-interval 0
+          snsr-grp 529 sample-interval 0
+          snsr-grp 530 sample-interval 0
+          snsr-grp 531 sample-interval 61000
+        subscription 501
+          dst-grp 501
+          snsr-grp 515 sample-interval 0
+          snsr-grp 516 sample-interval 0
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n1
+    image_definition: null
+    label: n9kv-3
+    node_definition: nxosv9000
+    ram: null
+    tags: []
+    x: -80
+    y: 80
+    interfaces:
+      - id: i0
+        label: Loopback0
+        type: loopback
+      - id: i1
+        label: mgmt0
+        slot: 0
+        type: physical
+      - id: i2
+        label: Ethernet1/1
+        slot: 1
+        type: physical
+      - id: i3
+        label: Ethernet1/2
+        slot: 2
+        type: physical
+      - id: i4
+        label: Ethernet1/3
+        slot: 3
+        type: physical
+  - boot_disk_size: null
+    configuration: System Bridge
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n2
+    image_definition: null
+    label: ext-conn-0
+    node_definition: external_connector
+    ram: null
+    tags: []
+    x: -720
+    y: 120
+    interfaces:
+      - id: i0
+        label: port
+        slot: 0
+        type: physical
+  - boot_disk_size: null
+    configuration: ums-70ea9237-40
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n3
+    image_definition: null
+    label: unmanaged-switch-0
+    node_definition: unmanaged_switch
+    ram: null
+    tags: []
+    x: -560
+    y: 120
+    interfaces:
+      - id: i0
+        label: port0
+        slot: 0
+        type: physical
+      - id: i1
+        label: port1
+        slot: 1
+        type: physical
+      - id: i2
+        label: port2
+        slot: 2
+        type: physical
+      - id: i3
+        label: port3
+        slot: 3
+        type: physical
+      - id: i4
+        label: port4
+        slot: 4
+        type: physical
+      - id: i5
+        label: port5
+        slot: 5
+        type: physical
+      - id: i6
+        label: port6
+        slot: 6
+        type: physical
+      - id: i7
+        label: port7
+        slot: 7
+        type: physical
+  - boot_disk_size: null
+    configuration: |2-
+
+      !Command: show running-config
+      !Running configuration last done at: Tue Jan  9 19:34:08 2024
+      !Time: Tue Jan  9 19:34:08 2024
+
+      version 10.3(1) Bios:version
+      hostname n9kv-2
+      vdc n9kv-2 id 1
+        limit-resource vlan minimum 16 maximum 4094
+        limit-resource vrf minimum 2 maximum 4096
+        limit-resource port-channel minimum 0 maximum 511
+        limit-resource m4route-mem minimum 58 maximum 58
+        limit-resource m6route-mem minimum 8 maximum 8
+
+      feature nxapi
+      nv overlay evpn
+      feature ospf
+      feature bgp
+      feature pim
+      feature lldp
+      feature nv overlay
+      feature ngoam
+      feature telemetry
+
+      no password strength-check
+      username admin password 5 $5$HNJEGG$LZHgHB6.aa7mZp9/LpDelWklniSVG6lq0ph7El/NF5A  role network-admin
+      username cisco password 5 $5$FBCAFG$RIgkaNam1FRA0mJkWkc4NJ.lXz7rwRP8ks9dtPWW.k4  role network-admin
+      username cisco passphrase  lifetime 99999 warntime 14 gracetime 3
+      ip domain-lookup
+      copp profile strict
+      snmp-server user admin network-admin auth md5 204FEC5D9A484699A740F6034C34B85A6A86 priv aes-128 3743D230A57E1C96A41CE154012ABE0839AD localizedV2key
+      snmp-server user cisco network-admin auth md5 364BEC856FDFB983642683B0031FCB2E310C priv aes-128 055AEC8D16C4F3997B27CFA90E1CEE485421 localizedV2key
+      snmp-server host 172.20.104.99 traps version 2c public udp-port 2162
+      rmon event 1 log trap public description FATAL(1) owner PMON@FATAL
+      rmon event 2 log trap public description CRITICAL(2) owner PMON@CRITICAL
+      rmon event 3 log trap public description ERROR(3) owner PMON@ERROR
+      rmon event 4 log trap public description WARNING(4) owner PMON@WARNING
+      rmon event 5 log trap public description INFORMATION(5) owner PMON@INFO
+      ntp server 172.20.1.254 use-vrf management
+
+      ipv6 switch-packets lla
+      ip pim rp-address 10.254.254.1 group-list 239.1.1.0/25
+      ip pim ssm range 232.0.0.0/8
+      ip pim anycast-rp 10.254.254.1 10.2.0.1
+      ip pim anycast-rp 10.254.254.1 10.2.0.2
+      vlan 1
+
+      vrf context management
+        ip name-server 172.16.10.100
+        ip route 0.0.0.0/0 172.16.14.254
+      ngoam install acl
+
+      nxapi http port 80
+
+
+      interface Ethernet1/1
+        description connected-to-n9kv-4-Ethernet1/2
+        no switchport
+        mtu 9216
+        ip address 10.4.0.5/30
+        ip ospf network point-to-point
+        ip router ospf UNDERLAY area 0.0.0.0
+        ip pim sparse-mode
+        no shutdown
+
+      interface Ethernet1/2
+        description connected-to-n9kv-3-Ethernet1/2
+        no switchport
+        mtu 9216
+        ip address 10.4.0.13/30
+        ip ospf network point-to-point
+        ip router ospf UNDERLAY area 0.0.0.0
+        ip pim sparse-mode
+        no shutdown
+
+      interface Ethernet1/3
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/4
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/5
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/6
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/7
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/8
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/9
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/10
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/11
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/12
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/13
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/14
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/15
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/16
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/17
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/18
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/19
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/20
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/21
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/22
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/23
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/24
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/25
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/26
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/27
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/28
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/29
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/30
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/31
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/32
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/33
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/34
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/35
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/36
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/37
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/38
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/39
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/40
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/41
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/42
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/43
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/44
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/45
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/46
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/47
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/48
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/49
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/50
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/51
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/52
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/53
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/54
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/55
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/56
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/57
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/58
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/59
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/60
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/61
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/62
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/63
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface Ethernet1/64
+        no switchport
+        mtu 9216
+        no shutdown
+
+      interface mgmt0
+        vrf member management
+        ip address 172.16.14.103/24
+
+      interface loopback0
+        description Routing loopback interface
+        ip address 10.2.0.2/32
+        ip router ospf UNDERLAY area 0.0.0.0
+        ip pim sparse-mode
+
+      interface loopback254
+        description RP loopback interface
+        ip address 10.254.254.1/32
+        ip router ospf UNDERLAY area 0.0.0.0
+        ip pim sparse-mode
+      icam monitor scale
+
+      line console
+        exec-timeout 0
+      line vty
+        exec-timeout 0
+      boot nxos bootflash:/nxos64-cs.10.3.1.F.bin
+      router ospf UNDERLAY
+        router-id 10.2.0.2
+      router bgp 65100
+        router-id 10.2.0.2
+        neighbor 10.2.0.3
+          remote-as 65100
+          update-source loopback0
+          address-family l2vpn evpn
+            send-community
+            send-community extended
+            route-reflector-client
+        neighbor 10.2.0.4
+          remote-as 65100
+          update-source loopback0
+          address-family l2vpn evpn
+            send-community
+            send-community extended
+            route-reflector-client
+
+      no logging console
+
+      telemetry
+        destination-profile
+          use-vrf default
+          source-interface loopback0
+        destination-group 500
+          ip address 172.16.114.93 port 57500 protocol gRPC encoding GPB
+        destination-group 501
+          ip address 172.16.114.93 port 57500 protocol gRPC encoding GPB-compact
+        sensor-group 500
+          data-source NX-API
+          path "show icam scale" depth unbounded
+          path "show module" depth unbounded
+          path "show processes cpu" depth unbounded
+          path "show processes log" depth unbounded
+          path "show processes memory physical" depth unbounded
+          path "show spanning-tree summary" depth unbounded
+        sensor-group 501
+          data-source NX-API
+          path "show clock" depth unbounded
+          path "show epbr policy" depth unbounded
+          path "show feature" depth unbounded
+          path "show ip arp" depth unbounded
+          path "show ip interface brief VRF all" depth unbounded
+          path "show ipv6 interface brief VRF all" depth unbounded
+          path "show itd br" depth unbounded
+          path "show lacp counters detail" depth unbounded
+          path "show lacp interface" depth unbounded
+          path "show lldp traffic interface all" depth unbounded
+          path "show port-channel summary" depth unbounded
+          path "show system internal flash" depth unbounded
+        sensor-group 502
+          data-source DME
+          path sys/ch depth unbounded query-condition query-target=subtree&target-subtree-class=eqptPsu
+          path sys/intf query-condition query-target=subtree&target-subtree-class=l1PhysIf&query-target-filter=eq(l1PhysIf.adminSt,"up")&rsp-subtree=children&target-subtree-class=ethpmPhysIf&query-target-filter=eq(ethpmPhysIf.operSt,"up")&rsp-subtree-depth=2&rsp-ancestor-depth=1
+          path sys/ipqos depth unbounded query-condition query-target=subtree&target-subtree-class=ipqosQueuingStats&query-target-filter=or(ne(ipqosQueuingStats.pfcRxPpp,"0"),ne(ipqosQueuingStats.pfcTxPpp,"0"),ne(ipqosQueuingStats.randEcnMarkedPackets,"0"))
+        sensor-group 503
+          data-source DME
+          path sys query-condition query-target=subtree&target-subtree-class=l3Inst
+          path sys/ch depth 1 query-condition query-target=subtree&target-subtree-class=eqptSensor
+          path sys/intf query-condition query-target=subtree&target-subtree-class=eqptFcotLane,eqptFcotSensor
+        sensor-group 504
+          data-source DME
+          path sys/ch depth 1 query-condition query-target=subtree&target-subtree-class=eqptFan
+          path sys/vpc depth unbounded query-condition query-target=subtree&target-subtree-class=vpcDom,vpcIf,vpcPeerLink,vpcRsVpcConf
+        sensor-group 505
+          data-source NX-API
+          path "show nve peers detail" depth unbounded
+          path "show nve vni" depth unbounded
+          path "show system internal icam app hardware internal forwarding table utilization" depth unbounded query-condition show-output-format=json
+          path "show system internal icam app system internal access-list resource utilization" depth unbounded query-condition show-output-format=json
+        sensor-group 506
+          data-source NX-API
+          path "show system routing mode" depth unbounded
+        sensor-group 507
+          data-source DME
+          path sys/bgp depth 1 query-condition query-target=subtree&target-subtree-class=bgpPeerEntryStats,bgpPeerAfEntry
+          path sys/cdp depth 1 query-condition query-target=subtree&target-subtree-class=cdpIf,cdpIfStats,cdpAdjEp
+          path sys/lldp depth 1 query-condition query-target=subtree&target-subtree-class=lldpIf,lldpAdjEp,lldpIfStats
+          path sys/pim/pimdomdb query-condition rsp-subtree=full&rsp-foreign-subtree=ephemeral
+          path sys/pim/pimifdb-stats query-condition rsp-subtree=full&rsp-foreign-subtree=ephemeral
+        sensor-group 508
+          data-source DME
+          path sys/cdp depth 1 query-condition query-target=subtree&target-subtree-class=cdpIf,cdpAdjEp,cdpInst
+        sensor-group 509
+          data-source DME
+          path sys/bgp depth unbounded query-condition query-target=subtree&complete-mo=yes&notify-interval=1&target-subtree-class=bgpEntity,bgpInst,bgpDom,bgpDomAf,bgpPeer,bgpPeerEntry,bgpPeerEvents
+        sensor-group 510
+          data-source DME
+          path sys/intf depth unbounded query-condition query-target=subtree&target-subtree-class=pcAggrIf&query-target-filter=deleted()
+        sensor-group 511
+          data-source DME
+          path sys/ch depth unbounded query-condition query-target=subtree&complete-mo=yes&notify-interval=1&target-subtree-class=eqptLC,eqptSupC,eqptFtSlot,eqptFt,eqptPsuSlot,eqptFan
+        sensor-group 512
+          data-source DME
+          path sys/ch depth unbounded query-condition query-target=subtree&target-subtree-class=eqptPsu&query-target-filter=or(and(updated(eqptPsu.operSt),eq(eqptPsu.operSt,"ok")),and(updated(eqptPsu.operSt),ne(eqptPsu.operSt,"ok")))
+        sensor-group 513
+          data-source NX-API
+          path "show ip igmp snooping" depth unbounded
+          path "show ip igmp snooping groups" depth unbounded
+          path "show ip igmp snooping groups detail" depth unbounded
+          path "show ip igmp snooping groups summary" depth unbounded
+          path "show ip igmp snooping statistics" depth unbounded
+        sensor-group 514
+          data-source NX-API
+          path "show queuing burst-detect detail" depth unbounded
+        sensor-group 515
+          data-source NATIVE
+          path adjacency
+          path mac-all
+        sensor-group 516
+          data-source NATIVE
+          path rib
+        sensor-group 517
+          data-source DME
+          path sys/intf depth unbounded query-condition query-target=subtree&target-subtree-class=ethpmAggrIf
+        sensor-group 518
+          data-source NX-API
+          path "show system resources" depth unbounded
+        sensor-group 519
+          data-source DME
+          path sys/pim depth unbounded query-condition query-target=subtree&complete-mo=yes&notify-interval=1&target-subtree-class=pimRPGrange,pimRPInfo,pimIf
+        sensor-group 520
+          data-source DME
+          path sys/pim/pimifdb-adj query-condition query-target=subtree&complete-mo=yes
+        sensor-group 521
+          data-source DME
+          path sys/pim/pimifdb-prop query-condition query-target=subtree&complete-mo=yes
+        sensor-group 522
+          data-source DME
+          path sys/pim/inst/routedb-route query-condition query-target=subtree&complete-mo=yes
+        sensor-group 523
+          data-source DME
+          path sys/igmp/igmpifdb-stats query-condition rsp-subtree=full&rsp-foreign-subtree=ephemeral
+        sensor-group 524
+          data-source DME
+          path sys/igmp/igmpifdb-prop query-condition query-target=subtree&complete-mo=yes
+        sensor-group 525
+          data-source DME
+          path sys/igmp/inst/routedb query-condition query-target=subtree&complete-mo=yes
+        sensor-group 526
+          data-source DME
+          path sys/intf query-condition query-target=subtree&target-subtree-class=ethpmPhysIf
+        sensor-group 527
+          data-source DME
+          path sys/vpc depth unbounded query-condition query-target=subtree&target-subtree-class=vpcIf,vpcRsVpcConf&query-target-filter=updated(vpcIf.localOperSt)
+        sensor-group 528
+          data-source DME
+          path sys/ipv4 query-condition query-target=subtree&target-subtree-class=ipv4If
+        sensor-group 529
+          data-source DME
+          path sys/intf depth unbounded query-condition query-target=subtree&target-subtree-class=sviIf
+        sensor-group 530
+          data-source DME
+          path sys/accounting/log query-condition query-target=subtree&complete-mo=yes&notify-interval=1
+        sensor-group 531
+          data-source DME
+          path sys/intf query-condition query-target=subtree&target-subtree-class=pcAggrIf&rsp-subtree=children
+        subscription 500
+          dst-grp 500
+          snsr-grp 500 sample-interval 59000
+          snsr-grp 501 sample-interval 300000
+          snsr-grp 502 sample-interval 60000
+          snsr-grp 503 sample-interval 302000
+          snsr-grp 504 sample-interval 301000
+          snsr-grp 505 sample-interval 301000
+          snsr-grp 506 sample-interval 3600000
+          snsr-grp 507 sample-interval 305000
+          snsr-grp 508 sample-interval 0
+          snsr-grp 509 sample-interval 0
+          snsr-grp 510 sample-interval 0
+          snsr-grp 511 sample-interval 0
+          snsr-grp 512 sample-interval 0
+          snsr-grp 513 sample-interval 303000
+          snsr-grp 514 sample-interval 60000
+          snsr-grp 517 sample-interval 0
+          snsr-grp 518 sample-interval 64000
+          snsr-grp 519 sample-interval 0
+          snsr-grp 520 sample-interval 0
+          snsr-grp 521 sample-interval 0
+          snsr-grp 522 sample-interval 0
+          snsr-grp 523 sample-interval 306000
+          snsr-grp 524 sample-interval 0
+          snsr-grp 525 sample-interval 0
+          snsr-grp 526 sample-interval 0
+          snsr-grp 527 sample-interval 0
+          snsr-grp 528 sample-interval 0
+          snsr-grp 529 sample-interval 0
+          snsr-grp 530 sample-interval 0
+          snsr-grp 531 sample-interval 61000
+        subscription 501
+          dst-grp 501
+          snsr-grp 515 sample-interval 0
+          snsr-grp 516 sample-interval 0
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n4
+    image_definition: null
+    label: n9kv-2
+    node_definition: nxosv9000
+    ram: null
+    tags: []
+    x: -320
+    y: 400
+    interfaces:
+      - id: i0
+        label: Loopback0
+        type: loopback
+      - id: i1
+        label: mgmt0
+        slot: 0
+        type: physical
+      - id: i2
+        label: Ethernet1/1
+        slot: 1
+        type: physical
+      - id: i3
+        label: Ethernet1/2
+        slot: 2
+        type: physical
+      - id: i4
+        label: Ethernet1/3
+        slot: 3
+        type: physical
+  - boot_disk_size: null
+    configuration: |2-
+
+      !Command: show running-config
+      !Running configuration last done at: Tue Jan  9 19:34:07 2024
+      !Time: Tue Jan  9 19:34:08 2024
+
+      version 10.3(1) Bios:version
+      hostname n9kv-4
+      vdc n9kv-4 id 1
+        limit-resource vlan minimum 16 maximum 4094
+        limit-resource vrf minimum 2 maximum 4096
+        limit-resource port-channel minimum 0 maximum 511
+        limit-resource m4route-mem minimum 58 maximum 58
+        limit-resource m6route-mem minimum 8 maximum 8
+
+      feature nxapi
+      cfs eth distribute
+      nv overlay evpn
+      feature ospf
+      feature bgp
+      feature pim
+      feature interface-vlan
+      feature vn-segment-vlan-based
+      feature lacp
+      feature dhcp
+      feature vpc
+      feature lldp
+      feature nv overlay
+      feature ngoam
+      feature telemetry
+
+      no password strength-check
+      username admin password 5 $5$JNCPAE$ncShedWKypxNTUDzAumR7lhzHKj9wYqhZZWKcdX7Qn8  role network-admin
+      username cisco password 5 $5$DJFHKN$N5xMBgB8SteYz.GLmt0nJhw6rZRRQlWBJ.1hc7YkQC/  role network-admin
+      username cisco passphrase  lifetime 99999 warntime 14 gracetime 3
+      ip domain-lookup
+      copp profile strict
+      snmp-server user admin network-admin auth md5 043B460355FE265E60D9C5F7EA789304F8DD priv aes-128 5222692D69EA48036ED6C3E1AE2AC75386F8 localizedV2key
+      snmp-server user cisco network-admin auth md5 364FF88A0799BAF696A29219AC7879F1B2B6 priv aes-128 5236B4D44791B1B4DA87F218B36136B0E4A3 localizedV2key
+      snmp-server host 172.20.104.99 traps version 2c public udp-port 2162
+      rmon event 1 log trap public description FATAL(1) owner PMON@FATAL
+      rmon event 2 log trap public description CRITICAL(2) owner PMON@CRITICAL
+      rmon event 3 log trap public description ERROR(3) owner PMON@ERROR
+      rmon event 4 log trap public description WARNING(4) owner PMON@WARNING
+      rmon event 5 log trap public description INFORMATION(5) owner PMON@INFO
+      ntp server 172.20.1.254 use-vrf management
+
+      fabric forwarding anycast-gateway-mac 2020.0000.00aa
+      ipv6 switch-packets lla
+      ip pim rp-address 10.254.254.1 group-list 239.1.1.0/25
+      ip pim ssm range 232.0.0.0/8
+      vlan 1,3600
+
+      route-map fabric-rmap-redist-subnet permit 10
+        match tag 12345
+      service dhcp
+      ip dhcp relay
+      ip dhcp relay information option
+      ip dhcp relay information option vpn
+      ipv6 dhcp relay
+      vrf context management
+        ip name-server 172.16.10.100
+        ip route 0.0.0.0/0 172.16.14.254
+      vpc domain 1
+        peer-switch
+        peer-keepalive destination 172.16.14.102 source 172.16.14.104
+        delay restore 150
+        peer-gateway
+        auto-recovery reload-delay 360
+        ipv6 nd synchronize
+        ip arp synchronize
+      ngoam install acl
+
+      nxapi http port 80
+
+
+      interface Vlan1
+        no ip redirects
+        no ipv6 redirects
+
+      interface Vlan3600
+        description VPC-Peer-Link SVI
+        no shutdown
+        mtu 9216
+        no ip redirects
+        ip address 10.4.0.2/30
+        no ipv6 redirects
+        ip ospf network point-to-point
+        ip router ospf UNDERLAY area 0.0.0.0
+        ip pim sparse-mode
+
+      interface port-channel500
+        description "vpc-peer-link n9kv-4--n9kv-3"
+        switchport mode trunk
+        spanning-tree port type network
+        vpc peer-link
+
+      interface nve1
+        no shutdown
+        host-reachability protocol bgp
+        source-interface loopback1
+
+      interface Ethernet1/1
+        description connected-to-n9kv-1-Ethernet1/1
+        no switchport
+        mtu 9216
+        ip address 10.4.0.10/30
+        ip ospf network point-to-point
+        ip router ospf UNDERLAY area 0.0.0.0
+        ip pim sparse-mode
+        no shutdown
+
+      interface Ethernet1/2
+        description connected-to-n9kv-2-Ethernet1/1
+        no switchport
+        mtu 9216
+        ip address 10.4.0.6/30
+        ip ospf network point-to-point
+        ip router ospf UNDERLAY area 0.0.0.0
+        ip pim sparse-mode
+        no shutdown
+
+      interface Ethernet1/3
+        description "PO 500 (vpc-peer-link) member n9kv-4-Ethernet1/3 to n9kv-3-Ethernet1/3"
+        switchport mode trunk
+        channel-group 500 mode active
+
+      interface Ethernet1/4
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/5
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/6
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/7
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/8
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/9
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/10
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/11
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/12
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/13
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/14
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/15
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/16
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/17
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/18
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/19
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/20
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/21
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/22
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/23
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/24
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/25
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/26
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/27
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/28
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/29
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/30
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/31
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/32
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/33
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/34
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/35
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/36
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/37
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/38
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/39
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/40
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/41
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/42
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/43
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/44
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/45
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/46
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/47
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/48
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/49
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/50
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/51
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/52
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/53
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/54
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/55
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/56
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/57
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/58
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/59
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/60
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/61
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/62
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/63
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface Ethernet1/64
+        switchport mode trunk
+        switchport trunk allowed vlan none
+        spanning-tree port type edge trunk
+        mtu 9216
+
+      interface mgmt0
+        vrf member management
+        ip address 172.16.14.104/24
+
+      interface loopback0
+        description Routing loopback interface
+        ip address 10.2.0.4/32
+        ip router ospf UNDERLAY area 0.0.0.0
+        ip pim sparse-mode
+
+      interface loopback1
+        description VTEP loopback interface
+        ip address 10.3.0.3/32
+        ip address 10.3.0.2/32 secondary
+        ip router ospf UNDERLAY area 0.0.0.0
+        ip pim sparse-mode
+      icam monitor scale
+
+      line console
+        exec-timeout 0
+      line vty
+        exec-timeout 0
+      boot nxos bootflash:/nxos64-cs.10.3.1.F.bin
+      router ospf UNDERLAY
+        router-id 10.2.0.4
+      router bgp 65100
+        router-id 10.2.0.4
+        neighbor 10.2.0.1
+          remote-as 65100
+          update-source loopback0
+          address-family l2vpn evpn
+            send-community
+            send-community extended
+        neighbor 10.2.0.2
+          remote-as 65100
+          update-source loopback0
+          address-family l2vpn evpn
+            send-community
+            send-community extended
+      evpn
+
+      no logging console
+
+      telemetry
+        destination-profile
+          use-vrf default
+          source-interface loopback0
+        destination-group 500
+          ip address 172.16.114.94 port 57500 protocol gRPC encoding GPB
+        destination-group 501
+          ip address 172.16.114.94 port 57500 protocol gRPC encoding GPB-compact
+        sensor-group 500
+          data-source NX-API
+          path "show icam scale" depth unbounded
+          path "show module" depth unbounded
+          path "show processes cpu" depth unbounded
+          path "show processes log" depth unbounded
+          path "show processes memory physical" depth unbounded
+          path "show spanning-tree summary" depth unbounded
+        sensor-group 501
+          data-source NX-API
+          path "show clock" depth unbounded
+          path "show epbr policy" depth unbounded
+          path "show feature" depth unbounded
+          path "show ip arp" depth unbounded
+          path "show ip interface brief VRF all" depth unbounded
+          path "show ipv6 interface brief VRF all" depth unbounded
+          path "show itd br" depth unbounded
+          path "show lacp counters detail" depth unbounded
+          path "show lacp interface" depth unbounded
+          path "show lldp traffic interface all" depth unbounded
+          path "show port-channel summary" depth unbounded
+          path "show system internal flash" depth unbounded
+        sensor-group 502
+          data-source DME
+          path sys/ch depth unbounded query-condition query-target=subtree&target-subtree-class=eqptPsu
+          path sys/intf query-condition query-target=subtree&target-subtree-class=l1PhysIf&query-target-filter=eq(l1PhysIf.adminSt,"up")&rsp-subtree=children&target-subtree-class=ethpmPhysIf&query-target-filter=eq(ethpmPhysIf.operSt,"up")&rsp-subtree-depth=2&rsp-ancestor-depth=1
+          path sys/ipqos depth unbounded query-condition query-target=subtree&target-subtree-class=ipqosQueuingStats&query-target-filter=or(ne(ipqosQueuingStats.pfcRxPpp,"0"),ne(ipqosQueuingStats.pfcTxPpp,"0"),ne(ipqosQueuingStats.randEcnMarkedPackets,"0"))
+        sensor-group 503
+          data-source DME
+          path sys query-condition query-target=subtree&target-subtree-class=l3Inst
+          path sys/ch depth 1 query-condition query-target=subtree&target-subtree-class=eqptSensor
+          path sys/intf query-condition query-target=subtree&target-subtree-class=eqptFcotLane,eqptFcotSensor
+        sensor-group 504
+          data-source DME
+          path sys/ch depth 1 query-condition query-target=subtree&target-subtree-class=eqptFan
+          path sys/vpc depth unbounded query-condition query-target=subtree&target-subtree-class=vpcDom,vpcIf,vpcPeerLink,vpcRsVpcConf
+        sensor-group 505
+          data-source NX-API
+          path "show nve peers detail" depth unbounded
+          path "show nve vni" depth unbounded
+          path "show system internal icam app hardware internal forwarding table utilization" depth unbounded query-condition show-output-format=json
+          path "show system internal icam app system internal access-list resource utilization" depth unbounded query-condition show-output-format=json
+        sensor-group 506
+          data-source NX-API
+          path "show system routing mode" depth unbounded
+        sensor-group 507
+          data-source DME
+          path sys/bgp depth 1 query-condition query-target=subtree&target-subtree-class=bgpPeerEntryStats,bgpPeerAfEntry
+          path sys/cdp depth 1 query-condition query-target=subtree&target-subtree-class=cdpIf,cdpIfStats,cdpAdjEp
+          path sys/lldp depth 1 query-condition query-target=subtree&target-subtree-class=lldpIf,lldpAdjEp,lldpIfStats
+          path sys/pim/pimdomdb query-condition rsp-subtree=full&rsp-foreign-subtree=ephemeral
+          path sys/pim/pimifdb-stats query-condition rsp-subtree=full&rsp-foreign-subtree=ephemeral
+        sensor-group 508
+          data-source DME
+          path sys/cdp depth 1 query-condition query-target=subtree&target-subtree-class=cdpIf,cdpAdjEp,cdpInst
+        sensor-group 509
+          data-source DME
+          path sys/bgp depth unbounded query-condition query-target=subtree&complete-mo=yes&notify-interval=1&target-subtree-class=bgpEntity,bgpInst,bgpDom,bgpDomAf,bgpPeer,bgpPeerEntry,bgpPeerEvents
+        sensor-group 510
+          data-source DME
+          path sys/intf depth unbounded query-condition query-target=subtree&target-subtree-class=pcAggrIf&query-target-filter=deleted()
+        sensor-group 511
+          data-source DME
+          path sys/ch depth unbounded query-condition query-target=subtree&complete-mo=yes&notify-interval=1&target-subtree-class=eqptLC,eqptSupC,eqptFtSlot,eqptFt,eqptPsuSlot,eqptFan
+        sensor-group 512
+          data-source DME
+          path sys/ch depth unbounded query-condition query-target=subtree&target-subtree-class=eqptPsu&query-target-filter=or(and(updated(eqptPsu.operSt),eq(eqptPsu.operSt,"ok")),and(updated(eqptPsu.operSt),ne(eqptPsu.operSt,"ok")))
+        sensor-group 513
+          data-source NX-API
+          path "show ip igmp snooping" depth unbounded
+          path "show ip igmp snooping groups" depth unbounded
+          path "show ip igmp snooping groups detail" depth unbounded
+          path "show ip igmp snooping groups summary" depth unbounded
+          path "show ip igmp snooping statistics" depth unbounded
+        sensor-group 514
+          data-source NX-API
+          path "show queuing burst-detect detail" depth unbounded
+        sensor-group 515
+          data-source NATIVE
+          path adjacency
+          path mac-all
+        sensor-group 516
+          data-source NATIVE
+          path rib
+        sensor-group 517
+          data-source DME
+          path sys/intf depth unbounded query-condition query-target=subtree&target-subtree-class=ethpmAggrIf
+        sensor-group 518
+          data-source NX-API
+          path "show system resources" depth unbounded
+        sensor-group 519
+          data-source DME
+          path sys/pim depth unbounded query-condition query-target=subtree&complete-mo=yes&notify-interval=1&target-subtree-class=pimRPGrange,pimRPInfo,pimIf
+        sensor-group 520
+          data-source DME
+          path sys/pim/pimifdb-adj query-condition query-target=subtree&complete-mo=yes
+        sensor-group 521
+          data-source DME
+          path sys/pim/pimifdb-prop query-condition query-target=subtree&complete-mo=yes
+        sensor-group 522
+          data-source DME
+          path sys/pim/inst/routedb-route query-condition query-target=subtree&complete-mo=yes
+        sensor-group 523
+          data-source DME
+          path sys/igmp/igmpifdb-stats query-condition rsp-subtree=full&rsp-foreign-subtree=ephemeral
+        sensor-group 524
+          data-source DME
+          path sys/igmp/igmpifdb-prop query-condition query-target=subtree&complete-mo=yes
+        sensor-group 525
+          data-source DME
+          path sys/igmp/inst/routedb query-condition query-target=subtree&complete-mo=yes
+        sensor-group 526
+          data-source DME
+          path sys/intf query-condition query-target=subtree&target-subtree-class=ethpmPhysIf
+        sensor-group 527
+          data-source DME
+          path sys/vpc depth unbounded query-condition query-target=subtree&target-subtree-class=vpcIf,vpcRsVpcConf&query-target-filter=updated(vpcIf.localOperSt)
+        sensor-group 528
+          data-source DME
+          path sys/ipv4 query-condition query-target=subtree&target-subtree-class=ipv4If
+        sensor-group 529
+          data-source DME
+          path sys/intf depth unbounded query-condition query-target=subtree&target-subtree-class=sviIf
+        sensor-group 530
+          data-source DME
+          path sys/accounting/log query-condition query-target=subtree&complete-mo=yes&notify-interval=1
+        sensor-group 531
+          data-source DME
+          path sys/intf query-condition query-target=subtree&target-subtree-class=pcAggrIf&rsp-subtree=children
+        subscription 500
+          dst-grp 500
+          snsr-grp 500 sample-interval 59000
+          snsr-grp 501 sample-interval 300000
+          snsr-grp 502 sample-interval 60000
+          snsr-grp 503 sample-interval 302000
+          snsr-grp 504 sample-interval 301000
+          snsr-grp 505 sample-interval 301000
+          snsr-grp 506 sample-interval 3600000
+          snsr-grp 507 sample-interval 305000
+          snsr-grp 508 sample-interval 0
+          snsr-grp 509 sample-interval 0
+          snsr-grp 510 sample-interval 0
+          snsr-grp 511 sample-interval 0
+          snsr-grp 512 sample-interval 0
+          snsr-grp 513 sample-interval 303000
+          snsr-grp 514 sample-interval 60000
+          snsr-grp 517 sample-interval 0
+          snsr-grp 518 sample-interval 64000
+          snsr-grp 519 sample-interval 0
+          snsr-grp 520 sample-interval 0
+          snsr-grp 521 sample-interval 0
+          snsr-grp 522 sample-interval 0
+          snsr-grp 523 sample-interval 306000
+          snsr-grp 524 sample-interval 0
+          snsr-grp 525 sample-interval 0
+          snsr-grp 526 sample-interval 0
+          snsr-grp 527 sample-interval 0
+          snsr-grp 528 sample-interval 0
+          snsr-grp 529 sample-interval 0
+          snsr-grp 530 sample-interval 0
+          snsr-grp 531 sample-interval 61000
+        subscription 501
+          dst-grp 501
+          snsr-grp 515 sample-interval 0
+          snsr-grp 516 sample-interval 0
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n5
+    image_definition: null
+    label: n9kv-4
+    node_definition: nxosv9000
+    ram: null
+    tags: []
+    x: -80
+    y: 400
+    interfaces:
+      - id: i0
+        label: Loopback0
+        type: loopback
+      - id: i1
+        label: mgmt0
+        slot: 0
+        type: physical
+      - id: i2
+        label: Ethernet1/1
+        slot: 1
+        type: physical
+      - id: i3
+        label: Ethernet1/2
+        slot: 2
+        type: physical
+      - id: i4
+        label: Ethernet1/3
+        slot: 3
+        type: physical
+  - boot_disk_size: null
+    configuration: bridge1
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n6
+    image_definition: null
+    label: ext-conn-1
+    node_definition: external_connector
+    ram: null
+    tags: []
+    x: -680
+    y: 480
+    interfaces:
+      - id: i0
+        label: port
+        slot: 0
+        type: physical
+  - boot_disk_size: null
+    configuration: |-
+      #cloud-config
+      hostname: ubuntu-cml
+      manage_etc_hosts: False
+      system_info:
+        default_user:
+          name: cisco
+      password: cisco
+      chpasswd: { expire: False }
+      ssh_pwauth: True
+      ssh_authorized_keys:
+         - ecdsa-sha2-nistp521 AAAAE2VjZHNhLXNoYTItbmlzdHA1MjEAAAAIbmlzdHA1MjEAAACFBAHq28PeSRKuZn/dnuA7SQJsJ0ka0eEnGItNqZdW/5zOhe7AzQ7KYYo0mVGrATXZFFIlRm2vELbh9/tOegzhyyGuuwE4wmhE7r+9/a65A2wuZ6+Wx0X04CwdW1Ityh+Gq/aSv338BuMeyznsfIyVEuGEdbczZMVts/HdnIUAOmOrLQAirQ== dcloud@dcloud
+      runcmd:
+         - ip addr add dev ens2 local 172.16.14.33/24
+         - ip route add to 0.0.0.0/0 dev ens2 via 172.16.14.254
+         - rm /etc/resolv.conf
+         - echo "nameserver 172.16.10.100" > /etc/resolv.conf
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n7
+    image_definition: null
+    label: ubuntu-0
+    node_definition: ubuntu
+    ram: null
+    tags: []
+    x: -400
+    y: 520
+    interfaces:
+      - id: i0
+        label: ens2
+        slot: 0
+        type: physical
+      - id: i1
+        label: ens3
+        slot: 1
+        type: physical
+  - boot_disk_size: null
+    configuration: ums-af54ac00-8f
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n8
+    image_definition: null
+    label: unmanaged-switch-1
+    node_definition: unmanaged_switch
+    ram: null
+    tags: []
+    x: 40
+    y: 480
+    interfaces:
+      - id: i0
+        label: port0
+        slot: 0
+        type: physical
+      - id: i1
+        label: port1
+        slot: 1
+        type: physical
+      - id: i2
+        label: port2
+        slot: 2
+        type: physical
+      - id: i3
+        label: port3
+        slot: 3
+        type: physical
+      - id: i4
+        label: port4
+        slot: 4
+        type: physical
+      - id: i5
+        label: port5
+        slot: 5
+        type: physical
+      - id: i6
+        label: port6
+        slot: 6
+        type: physical
+      - id: i7
+        label: port7
+        slot: 7
+        type: physical
+links:
+  - id: l0
+    n1: n2
+    n2: n3
+    i1: i0
+    i2: i0
+    conditioning: {}
+    label: ext-conn-0-port<->unmanaged-switch-0-port0
+  - id: l1
+    n1: n3
+    n2: n0
+    i1: i2
+    i2: i1
+    conditioning: {}
+    label: unmanaged-switch-0-port2<->nxos9000-0-mgmt0
+  - id: l2
+    n1: n3
+    n2: n1
+    i1: i3
+    i2: i1
+    conditioning: {}
+    label: unmanaged-switch-0-port3<->nxos9000-1-mgmt0
+  - id: l3
+    n1: n3
+    n2: n4
+    i1: i4
+    i2: i1
+    conditioning: {}
+    label: unmanaged-switch-0-port4<->nxos9000-2-mgmt0
+  - id: l4
+    n1: n3
+    n2: n5
+    i1: i5
+    i2: i1
+    conditioning: {}
+    label: unmanaged-switch-0-port5<->nxos9000-3-mgmt0
+  - id: l5
+    n1: n5
+    n2: n0
+    i1: i2
+    i2: i2
+    conditioning: {}
+    label: nxos9000-3-Ethernet1/1<->nxos9000-0-Ethernet1/1
+  - id: l6
+    n1: n5
+    n2: n4
+    i1: i3
+    i2: i2
+    conditioning: {}
+    label: nxos9000-3-Ethernet1/2<->nxos9000-2-Ethernet1/1
+  - id: l7
+    n1: n1
+    n2: n0
+    i1: i2
+    i2: i3
+    conditioning: {}
+    label: nxos9000-1-Ethernet1/1<->nxos9000-0-Ethernet1/2
+  - id: l8
+    n1: n1
+    n2: n4
+    i1: i3
+    i2: i3
+    conditioning: {}
+    label: nxos9000-1-Ethernet1/2<->nxos9000-2-Ethernet1/2
+  - id: l9
+    n1: n1
+    n2: n5
+    i1: i4
+    i2: i4
+    conditioning: {}
+    label: n9kv-3-Ethernet1/3<->n9kv-4-Ethernet1/3
+  - id: l10
+    n1: n7
+    n2: n3
+    i1: i0
+    i2: i1
+    conditioning: {}
+    label: ubuntu-0-ens2<->unmanaged-switch-0-port1
+  - id: l11
+    n1: n7
+    n2: n8
+    i1: i1
+    i2: i0
+    conditioning: {}
+    label: ubuntu-0-ens3<->unmanaged-switch-1-port0
+lab:
+  description: ''
+  notes: ''
+  title: Lab at Wed 22:54 PM
+  version: 0.2.1
