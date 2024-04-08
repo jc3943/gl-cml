@@ -45,7 +45,7 @@
              authgroup: "dev-creds"
              device-type:
                cli:
-                 ned-id: "cisco-nx-cli-5.23"
+                 ned-id: "{{ devices.nedId }}"
              port: "22"
              state:
                admin-state: "unlocked"
@@ -70,7 +70,7 @@
              authgroup: "dev-creds"
              device-type:
                cli:
-                 ned-id: "cisco-ios-cli-6.92"
+                 ned-id: "{{ devices.nedId }}"
              port: "22"
              state:
                admin-state: "unlocked"
@@ -96,7 +96,7 @@
              local-user: admin
              device-type:
                generic:
-                 ned-id: "cisco-apicdc-gen-3.19"
+                 ned-id: "{{ devices.nedId }}"
              ned-settings:
                tailf-ned-cisco-apicdc-meta:cisco-apicdc:
                  config-path: "/home/thor/aci"

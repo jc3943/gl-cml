@@ -7,8 +7,8 @@
   become: true
   vars:
     container_count: 1
-    default_container_name: nso
-    default_container_image: jc3943/nso-sys:6.1.4
+    default_container_name: nso-616
+    default_container_image: jc3943/nso-616:latest
 
   tasks:
     - name: Install required system packages

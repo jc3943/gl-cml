@@ -167,12 +167,12 @@ comma=","
 dot="."
 ON = True
 OFF = False
-server = "https://198.18.133.10" # Set the server IP (FMC)
+server = "https://172.16.14.89" # Set the server IP (FMC)
 new_resp = {} # A post response dictionary used to extract key values 
 # Set the username and password credentials to generate an authentication token
 
 username = "admin"
-password = "C1sco12345"
+password = "DEVP@ssw0rd"
 
 print (" ")
 print (">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
@@ -255,7 +255,7 @@ catpay={  "type": "Category",
 print(catpay)
 
 #SET THE CATEGORY URI
-tcurl = " https://198.18.133.10/api/fmc_config/v1/domain/e276abec-e0f2-11e3-8169-6d9ed49b625f/policy/accesspolicies/"+prid+"/categories?section=Mandatory"
+tcurl = " https://172.16.14.89/api/fmc_config/v1/domain/e276abec-e0f2-11e3-8169-6d9ed49b625f/policy/accesspolicies/"+prid+"/categories?section=Mandatory"
 print(tcurl)
 
 

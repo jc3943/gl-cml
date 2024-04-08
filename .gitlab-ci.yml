@@ -9,7 +9,7 @@ variables:
 
 
 prepUbuntuVm:
-  stage: cprepUbuntuVm
+  stage: prepUbuntuVm
   script:
     - ansible-playbook -i creds/ubuntu-inv nso/ubuntuDocker.yml -u cisco 
   only:
