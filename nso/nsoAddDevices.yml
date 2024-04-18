@@ -5,7 +5,7 @@
 - hosts: localhost
   gather_facts: no
   vars:
-    url: http://172.16.14.33:8080/jsonrpc
+    url: http://172.16.14.52:8080/jsonrpc
 
   tasks:
   - read_csv:
@@ -42,7 +42,7 @@
            - address: "{{ devices.deviceIp }}"
              description: CONFIGURED BY ANSIBLE!
              name: "{{ devices.deviceName }}"
-             authgroup: "dev-creds"
+             authgroup: "{{ devices.authGroup }}"
              device-type:
                cli:
                  ned-id: "{{ devices.nedId }}"
@@ -65,9 +65,8 @@
         tailf-ncs:devices:
           device:
            - address: "{{ devices.deviceIp }}"
-             description: CONFIGURED BY ANSIBLE!
              name: "{{ devices.deviceName }}"
-             authgroup: "dev-creds"
+             authgroup: "{{ devices.authGroup }}"
              device-type:
                cli:
                  ned-id: "{{ devices.nedId }}"
@@ -90,9 +89,8 @@
         tailf-ncs:devices:
           device:
            - address: "{{ devices.deviceIp }}"
-             description: CONFIGURED BY ANSIBLE!
              name: "{{ devices.deviceName }}"
-             authgroup: "dev-creds"
+             authgroup: "{{ devices.authGroup }}"
              local-user: admin
              device-type:
                generic:
@@ -113,6 +111,36 @@
     loop_control:
       loop_var: devices
     when: (devices.deviceType == "aci")
+
+  - name: Add FMC to  NSO
+    cisco.nso.nso_config:
+      url: "{{ url }}"
+      username: ncsadmin
+      password: ncsadmin
+      data:
+        tailf-ncs:devices:
+          device:
+           - address: "{{ devices.deviceIp }}"
+             name: "{{ devices.deviceName }}"
+             authgroup: "{{ devices.authGroup }}"
+             local-user: admin
+             device-type:
+               generic:
+                 ned-id: "{{ devices.nedId }}"
+             ned-settings:
+               tailf-ned-cisco-fmc-meta:cisco-fmc:
+                 cisco-fmc-connection:
+                   ssl:
+                     accept-any: true
+             ssh:
+               host-key-verification: "none"
+             port: "443"
+             state:
+               admin-state: "unlocked"
+    loop: "{{ devlist.list }}"
+    loop_control:
+      loop_var: devices
+    when: (devices.deviceType == "fmc")
 
   - name: Fetch ssh host keys
     cisco.nso.nso_action:
