@@ -2,7 +2,7 @@ stages:
   - prepUbuntuVm
   - addDevicesNso
 
-image: jcomer3943/ubuntu:cml
+image: jcomer3943/ubuntu-cml:latest
 
 variables:
   varPath: vars/$CI_COMMIT_REF_NAME
