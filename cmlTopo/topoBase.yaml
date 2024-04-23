@@ -63,7 +63,7 @@ nodes:
       feature telemetry
 
       no password strength-check
-      username admin password 5 $5$OEAJGG$kuv7mLR35ipjVlTAGOLXddBws1vJKk4hqdyIh0RnoY5  role network-admin
+      username admin password 5 $5$GHANPP$by2mkYYHv1eGfNrv2q8ZNu5JEN3S0HA9sSIK8GVkYp1 role network-admin
       username cisco password 5 $5$FGIAPE$WuFvEwME46uBoLec4dEeoUUUD6HuenytKS9I0hHmwC1  role network-admin
       username cisco passphrase  lifetime 99999 warntime 14 gracetime 3
       ip domain-lookup
@@ -153,7 +153,7 @@ nodes:
       feature telemetry
 
       no password strength-check
-      username admin password 5 $5$IEMHPN$6SxKlQGRqqx/Kdsoia0EqTfutlVZp9V1h5oFibSW6M0  role network-admin
+      username admin password 5 $5$GHANPP$by2mkYYHv1eGfNrv2q8ZNu5JEN3S0HA9sSIK8GVkYp1 role network-admin
       username cisco password 5 $5$OEOGGE$ygEvQlnKlKnNyymjEySlIVvJ3OJhOuo4XfyXAq/aOf1  role network-admin
       username cisco passphrase  lifetime 99999 warntime 14 gracetime 3
       ip domain-lookup
@@ -318,7 +318,7 @@ nodes:
       feature telemetry
 
       no password strength-check
-      username admin password 5 $5$HNJEGG$LZHgHB6.aa7mZp9/LpDelWklniSVG6lq0ph7El/NF5A  role network-admin
+      username admin password 5 $5$GHANPP$by2mkYYHv1eGfNrv2q8ZNu5JEN3S0HA9sSIK8GVkYp1 role network-admin
       username cisco password 5 $5$FBCAFG$RIgkaNam1FRA0mJkWkc4NJ.lXz7rwRP8ks9dtPWW.k4  role network-admin
       username cisco passphrase  lifetime 99999 warntime 14 gracetime 3
       ip domain-lookup
@@ -406,7 +406,7 @@ nodes:
       feature telemetry
 
       no password strength-check
-      username admin password 5 $5$JNCPAE$ncShedWKypxNTUDzAumR7lhzHKj9wYqhZZWKcdX7Qn8  role network-admin
+      username admin password 5 $5$GHANPP$by2mkYYHv1eGfNrv2q8ZNu5JEN3S0HA9sSIK8GVkYp1 role network-admin
       username cisco password 5 $5$DJFHKN$N5xMBgB8SteYz.GLmt0nJhw6rZRRQlWBJ.1hc7YkQC/  role network-admin
       username cisco passphrase  lifetime 99999 warntime 14 gracetime 3
       ip domain-lookup
