@@ -1,0 +1,13 @@
+{
+  "fabricName": "cml-nxos-vxlan",
+  "templateName": "Easy_Fabric",
+  "nvPairs": {
+    "FABRIC_NAME": "cml-nxos-vxlan",
+    "BGP_AS": "65100",
+    "VRF_LITE_AUTOCONFIG": "Back2Back&ToExternal",
+    "FABRIC_INTERFACE_TYPE": "p2p",
+    "SUBNET_TARGET_MASK": "31",
+    "RP_LB_ID": "251",
+    "GRFIELD_DEBUG_FLAG": "Enable",
+  }
+}
