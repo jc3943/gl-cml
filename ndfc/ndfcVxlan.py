@@ -1,3 +1,6 @@
+ #Jeff Comer
+# click app to deploy and configure fabric for vxlan evpn in ndfc
+
 import click
 import requests
 import json, yaml
@@ -5,7 +8,7 @@ import urllib3
 import urllib.parse
 import hvac
 import os, warnings
-import csv
+import csv, pprint
 
 #export VAULT_ADDR='ip address for vault'
 #export VAULT_TOKEN='vault access token'
@@ -71,9 +74,22 @@ def buildNdfcFabric(fabric_type, fabric, seedfile):
     switchPayload = {"seedIP":seedString, "username":nxosusername, "password":nxospassword, "preserveConfig":False, "switches":switchList}
     addSwitchUrl = API_BASE_URL + f'/appcenter/cisco/ndfc/api/v1/lan-fabric/rest/control/fabrics/{fabric}/inventory/discover'
     addSwitchResponse = requests.post( addSwitchUrl, headers=headers, json=switchPayload, verify=False)
-    print(switchPayload)
-    print(addSwitchResponse.text)
 
+    #routine to get switch serial numbers from ndfc (in CML, they are dynamically generated) and define switch roles
+    switchInfoUrl = API_BASE_URL + f'/appcenter/cisco/ndfc/api/v1/lan-fabric/rest/control/fabrics/{fabric}/inventory/switchesByFabric'
+    switchRoleUrl = API_BASE_URL + "/appcenter/cisco/ndfc/api/v1/lan-fabric/rest/control/switches/roles"
+    switchRoleList = []
+    switchInfoResponse = requests.get(switchInfoUrl, headers=headers, verify=False)
+    switchInfoJson = switchInfoResponse.json()
+    for i in range(len(csvDict)):
+        if (csvDict[i]['deviceType'] == "nxos"):
+            for k in range(len(switchInfoJson)):
+                switchDict = {}
+                if (csvDict[i]['deviceIp'] == switchInfoJson[k]['ipAddress']):
+                    switchDict = {"serialNumber":switchInfoJson[k]['serialNumber'], "role":csvDict[i]['role']}
+                    switchRoleList.append(switchDict)
+    print(switchRoleList)
+    switchRoleResponse = requests.post(switchRoleUrl, headers=headers, json=switchRoleList, verify=False)
 
 if __name__ == "__main__":
     buildNdfcFabric()
