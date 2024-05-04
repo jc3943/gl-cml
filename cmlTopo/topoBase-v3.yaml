@@ -63,7 +63,7 @@ nodes:
       feature telemetry
 
       no password strength-check
-      username admin password DEVP@ssw0rd  role network-admin
+      username admin password DEVP@ssw0rd123!@#!!  role network-admin
       username cisco password 5 $5$FGIAPE$WuFvEwME46uBoLec4dEeoUUUD6HuenytKS9I0hHmwC1  role network-admin
       username cisco passphrase  lifetime 99999 warntime 14 gracetime 3
       ip domain-lookup
@@ -152,7 +152,7 @@ nodes:
       feature telemetry
 
       no password strength-check
-      username admin password DEVP@ssw0rd  role network-admin
+      username admin password DEVP@ssw0rd123!@#!!  role network-admin
       username cisco password 5 $5$OEOGGE$ygEvQlnKlKnNyymjEySlIVvJ3OJhOuo4XfyXAq/aOf1  role network-admin
       username cisco passphrase  lifetime 99999 warntime 14 gracetime 3
       ip domain-lookup
@@ -278,7 +278,7 @@ nodes:
         slot: 0
         type: physical
   - boot_disk_size: null
-    configuration: ums-06a14d1a-9b
+    configuration: ums-55c5552c-b1
     cpu_limit: null
     cpus: null
     data_volume: null
@@ -351,7 +351,7 @@ nodes:
       feature telemetry
 
       no password strength-check
-      username admin password DEVP@ssw0rd  role network-admin
+      username admin password DEVP@ssw0rd123!@#!!  role network-admin
       username cisco password 5 $5$FBCAFG$RIgkaNam1FRA0mJkWkc4NJ.lXz7rwRP8ks9dtPWW.k4  role network-admin
       username cisco passphrase  lifetime 99999 warntime 14 gracetime 3
       ip domain-lookup
@@ -436,7 +436,7 @@ nodes:
       feature telemetry
 
       no password strength-check
-      username admin password DEVP@ssw0rd  role network-admin
+      username admin password DEVP@ssw0rd123!@#!!  role network-admin
       username cisco password 5 $5$FBCAFG$RIgkaNam1FRA0mJkWkc4NJ.lXz7rwRP8ks9dtPWW.k4  role network-admin
       username cisco passphrase  lifetime 99999 warntime 14 gracetime 3
       ip domain-lookup

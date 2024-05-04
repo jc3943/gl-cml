@@ -1,5 +1,5 @@
 deviceName,deviceIp,deviceType,authGroup,authGroupName,authGroupUser,authGroupPw,nedId,serialNumber,platform,version,role
-n9kv-1,172.16.14.101,nxos,nxos-creds,nxos-creds,admin,REVWUEBzc3cwcmQxMjMhQCMhIQo=,cisco-nx-cli-5.25,9NE1KNK7R33,N9K-C9300v,10.3(1),spine
+n9kv-1,172.16.14.101,nxos,nxos-creds,nxos-creds,admin,REVWUEBzc3cwcmQ=,cisco-nx-cli-5.25,9NE1KNK7R33,N9K-C9300v,10.3(1),spine
 n9kv-2,172.16.14.102,nxos,nxos-creds,,,,cisco-nx-cli-5.25,98JYBJ7QYRY,N9K-C9300v,10.3(1),spine
 n9kv-3,172.16.14.103,nxos,nxos-creds,,,,cisco-nx-cli-5.25,97S6YY8EWQO,N9K-C9300v,10.3(1),leaf
 n9kv-4,172.16.14.104,nxos,nxos-creds,,,,cisco-nx-cli-5.25,9RWDXGARCDO,N9K-C9300v,10.3(1),leaf
