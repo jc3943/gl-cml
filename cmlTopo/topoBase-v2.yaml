@@ -557,7 +557,7 @@ nodes:
          - ip route add to 0.0.0.0/0 dev ens2 via 172.16.14.254
          - ip addr add dev ens3 local 192.168.103.10/24
          - ip link set dev ens3 up
-         - ip route add to 192.168.0.0/16 dev ens3 via 192.168.103.254
+         - ip route add to 192.168.96.0/20 dev ens3 via 192.168.103.254
          - rm /etc/resolv.conf
          - echo "nameserver 172.16.10.100" > /etc/resolv.conf
     cpu_limit: null
@@ -638,7 +638,7 @@ nodes:
          - ip route add to 0.0.0.0/0 dev ens2 via 172.16.14.254
          - ip addr add dev ens3 local 192.168.104.10/24
          - ip link set dev ens3 up
-         - ip route add to 192.168.0.0/16 dev ens3 via 192.168.104.254
+         - ip route add to 192.168.96.0/20 dev ens3 via 192.168.104.254
          - rm /etc/resolv.conf
          - echo "nameserver 172.16.10.100" > /etc/resolv.conf
     cpu_limit: null
