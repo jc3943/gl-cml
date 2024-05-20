@@ -1,4 +1,5 @@
 stages:
+  - createCmlLab
   - prepUbuntuVm
   - addDevicesNso
 
@@ -7,12 +8,16 @@ image: jcomer3943/ubuntu-cml:latest
 variables:
   varPath: vars/$CI_COMMIT_REF_NAME
 
+createCmlLab:
+  stage: createCmlLab
+  script:
+    - python3 cmlLabBuilder.py --topo cmlTopo/topoBase-v2.yaml
 
 prepUbuntuVm:
   stage: prepUbuntuVm
   script:
-    - sleep 300
-    - ansible-playbook -i creds/ubuntu-inv nso/ubuntuDocker.yml -u cisco 
+    - ansible-playbook -i creds/ubuntu-inv nso/ubuntuDocker.yml -u cisco
+    - sleep 120
   only:
     - master
 
