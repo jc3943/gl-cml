@@ -2,6 +2,7 @@ stages:
   - createCmlLab
   - prepUbuntuVm
   - addDevicesNso
+  - ndfcCreateFabric
 
 image: jcomer3943/ubuntu-cml:latest
 
@@ -27,5 +28,12 @@ addDevicesNso:
   stage: addDevicesNso
   script:
     - ansible-playbook -i localhost nso/nsoAddDevices.yml
+  only:
+    - master
+
+ndfcCreateFabric:
+  stage: ndfcCreateFabric
+  script:
+    - python3 ndfc/ndfcVxlan.py --fabric_type Easy_Fabric --fabric cml-nxos-vxlan --seedfile vars/master/nso/nsoDevices2.csv --port_defs vars/master/vxlan/port-defs.csv
   only:
     - master
