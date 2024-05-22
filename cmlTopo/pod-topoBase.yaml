@@ -1,0 +1,775 @@
+annotations:
+  - border_color: '#808080FF'
+    border_style: ''
+    color: '#FFFFFFFF'
+    line_end: null
+    line_start: null
+    thickness: 1
+    type: line
+    x1: -560.0
+    y1: 240.0
+    x2: -560.0
+    y2: 240.0
+    z_index: 0
+  - border_color: '#808080FF'
+    border_style: ''
+    color: '#FFFFFFFF'
+    line_end: null
+    line_start: null
+    thickness: 1
+    type: line
+    x1: -80.0
+    y1: 40.0
+    x2: -80.0
+    y2: 40.0
+    z_index: 1
+  - border_color: '#808080FF'
+    border_style: ''
+    color: '#FFFFFFFF'
+    line_end: null
+    line_start: null
+    thickness: 1
+    type: line
+    x1: -280.0
+    y1: 240.0
+    x2: -280.0
+    y2: 240.0
+    z_index: 3
+nodes:
+  - boot_disk_size: null
+    configuration: |2-
+
+      !Command: show running-config
+      !Running configuration last done at: Tue Jan  9 19:34:08 2024
+      !Time: Tue Jan  9 19:34:08 2024
+
+      version 10.3(1) Bios:version
+      hostname n9kv-1
+      vdc n9kv-1 id 1
+        limit-resource vlan minimum 16 maximum 4094
+        limit-resource vrf minimum 2 maximum 4096
+        limit-resource port-channel minimum 0 maximum 511
+        limit-resource m4route-mem minimum 58 maximum 58
+        limit-resource m6route-mem minimum 8 maximum 8
+
+      feature nxapi
+      nv overlay evpn
+      feature ospf
+      feature bgp
+      feature pim
+      feature lldp
+      feature nv overlay
+      feature ngoam
+      feature telemetry
+
+      no password strength-check
+      username admin password DEVP@ssw0rd  role network-admin
+      username cisco password 5 $5$FGIAPE$WuFvEwME46uBoLec4dEeoUUUD6HuenytKS9I0hHmwC1  role network-admin
+      username cisco passphrase  lifetime 99999 warntime 14 gracetime 3
+      ip domain-lookup
+      copp profile strict
+
+      vlan 1
+
+      vrf context management
+        ip name-server 172.16.10.100
+        ip route 0.0.0.0/0 172.16.14.254
+      ngoam install acl
+
+      nxapi http port 80
+
+      interface mgmt0
+        vrf member management
+        ip address 172.0.1.201/24
+
+      line console
+        exec-timeout 0
+      line vty
+        exec-timeout 0
+      boot nxos bootflash:/nxos64-cs.10.3.1.F.bin
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n0
+    image_definition: null
+    label: n9kv-1
+    node_definition: nxosv9000
+    ram: null
+    tags: []
+    x: -320
+    y: 200
+    interfaces:
+      - id: i0
+        label: Loopback0
+        type: loopback
+      - id: i1
+        label: mgmt0
+        slot: 0
+        type: physical
+      - id: i2
+        label: Ethernet1/1
+        slot: 1
+        type: physical
+      - id: i3
+        label: Ethernet1/2
+        slot: 2
+        type: physical
+      - id: i4
+        label: Ethernet1/3
+        slot: 3
+        type: physical
+  - boot_disk_size: null
+    configuration: |2-
+
+      !Command: show running-config
+      !Running configuration last done at: Tue Jan  9 19:34:08 2024
+      !Time: Tue Jan  9 19:34:09 2024
+
+      version 10.3(1) Bios:version
+      hostname n9kv-3
+      vdc n9kv-3 id 1
+        limit-resource vlan minimum 16 maximum 4094
+        limit-resource vrf minimum 2 maximum 4096
+        limit-resource port-channel minimum 0 maximum 511
+        limit-resource m4route-mem minimum 58 maximum 58
+        limit-resource m6route-mem minimum 8 maximum 8
+
+      feature nxapi
+      cfs eth distribute
+      nv overlay evpn
+      feature ospf
+      feature bgp
+      feature pim
+      feature interface-vlan
+      feature vn-segment-vlan-based
+      feature lacp
+      feature dhcp
+      feature vpc
+      feature lldp
+      feature nv overlay
+      feature ngoam
+      feature telemetry
+
+      no password strength-check
+      username admin password DEVP@ssw0rd  role network-admin
+      username cisco password 5 $5$OEOGGE$ygEvQlnKlKnNyymjEySlIVvJ3OJhOuo4XfyXAq/aOf1  role network-admin
+      username cisco passphrase  lifetime 99999 warntime 14 gracetime 3
+      ip domain-lookup
+      copp profile strict
+
+      vlan 1,3600
+
+      vrf context management
+        ip name-server 172.16.10.100
+        ip route 0.0.0.0/0 172.16.14.254
+
+      vpc domain 1
+        peer-switch
+        peer-keepalive destination 172.0.1.204 source 172.0.1.203
+        delay restore 150
+        peer-gateway
+        auto-recovery reload-delay 360
+        ipv6 nd synchronize
+        ip arp synchronize
+
+      nxapi http port 80
+
+      interface Vlan3600
+        description VPC-Peer-Link SVI
+        no shutdown
+        mtu 9216
+        no ip redirects
+        ip address 10.4.0.1/30
+        no ipv6 redirects
+        ip ospf network point-to-point
+        ip router ospf UNDERLAY area 0.0.0.0
+        ip pim sparse-mode
+
+      interface port-channel500
+        description "vpc-peer-link n9kv-3--n9kv-4"
+        switchport mode trunk
+        spanning-tree port type network
+        vpc peer-link
+
+      interface Ethernet1/3
+        description "PO 500 (vpc-peer-link) member n9kv-3-Ethernet1/3 to n9kv-4-Ethernet1/3"
+        switchport mode trunk
+        channel-group 500 mode active
+
+      nxapi http port 80
+
+      interface mgmt0
+        vrf member management
+        ip address 172.0.1.203/24
+
+      line console
+        exec-timeout 0
+      line vty
+        exec-timeout 0
+      boot nxos bootflash:/nxos64-cs.10.3.1.F.bin
+
+      no logging console
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n1
+    image_definition: null
+    label: n9kv-3
+    node_definition: nxosv9000
+    ram: null
+    tags: []
+    x: -120
+    y: 160
+    interfaces:
+      - id: i0
+        label: Loopback0
+        type: loopback
+      - id: i1
+        label: mgmt0
+        slot: 0
+        type: physical
+      - id: i2
+        label: Ethernet1/1
+        slot: 1
+        type: physical
+      - id: i3
+        label: Ethernet1/2
+        slot: 2
+        type: physical
+      - id: i4
+        label: Ethernet1/3
+        slot: 3
+        type: physical
+      - id: i5
+        label: Ethernet1/4
+        slot: 4
+        type: physical
+      - id: i6
+        label: Ethernet1/5
+        slot: 5
+        type: physical
+      - id: i7
+        label: Ethernet1/6
+        slot: 6
+        type: physical
+      - id: i8
+        label: Ethernet1/7
+        slot: 7
+        type: physical
+  - boot_disk_size: null
+    configuration: System Bridge
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n2
+    image_definition: null
+    label: ext-conn-0
+    node_definition: external_connector
+    ram: null
+    tags: []
+    x: -720
+    y: 120
+    interfaces:
+      - id: i0
+        label: port
+        slot: 0
+        type: physical
+  - boot_disk_size: null
+    configuration: ums-06a14d1a-9b
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n3
+    image_definition: null
+    label: unmanaged-switch-0
+    node_definition: unmanaged_switch
+    ram: null
+    tags: []
+    x: -560
+    y: 120
+    interfaces:
+      - id: i0
+        label: port0
+        slot: 0
+        type: physical
+      - id: i1
+        label: port1
+        slot: 1
+        type: physical
+      - id: i2
+        label: port2
+        slot: 2
+        type: physical
+      - id: i3
+        label: port3
+        slot: 3
+        type: physical
+      - id: i4
+        label: port4
+        slot: 4
+        type: physical
+      - id: i5
+        label: port5
+        slot: 5
+        type: physical
+      - id: i6
+        label: port6
+        slot: 6
+        type: physical
+      - id: i7
+        label: port7
+        slot: 7
+        type: physical
+  - boot_disk_size: null
+    configuration: |2-
+
+      !Command: show running-config
+      !Running configuration last done at: Tue Jan  9 19:34:08 2024
+      !Time: Tue Jan  9 19:34:08 2024
+
+      version 10.3(1) Bios:version
+      hostname n9kv-2
+      vdc n9kv-2 id 1
+        limit-resource vlan minimum 16 maximum 4094
+        limit-resource vrf minimum 2 maximum 4096
+        limit-resource port-channel minimum 0 maximum 511
+        limit-resource m4route-mem minimum 58 maximum 58
+        limit-resource m6route-mem minimum 8 maximum 8
+
+      feature nxapi
+      nv overlay evpn
+      feature ospf
+      feature bgp
+      feature pim
+      feature lldp
+      feature nv overlay
+      feature ngoam
+      feature telemetry
+
+      no password strength-check
+      username admin password DEVP@ssw0rd  role network-admin
+      username cisco password 5 $5$FBCAFG$RIgkaNam1FRA0mJkWkc4NJ.lXz7rwRP8ks9dtPWW.k4  role network-admin
+      username cisco passphrase  lifetime 99999 warntime 14 gracetime 3
+      ip domain-lookup
+      copp profile strict
+
+      vrf context management
+        ip name-server 172.16.10.100
+        ip route 0.0.0.0/0 172.16.14.254
+
+      interface mgmt0
+        vrf member management
+        ip address 172.0.1.202/24
+
+      line console
+        exec-timeout 0
+      line vty
+        exec-timeout 0
+      boot nxos bootflash:/nxos64-cs.10.3.1.F.bin
+      no logging console
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n4
+    image_definition: null
+    label: n9kv-2
+    node_definition: nxosv9000
+    ram: null
+    tags: []
+    x: -320
+    y: 400
+    interfaces:
+      - id: i0
+        label: Loopback0
+        type: loopback
+      - id: i1
+        label: mgmt0
+        slot: 0
+        type: physical
+      - id: i2
+        label: Ethernet1/1
+        slot: 1
+        type: physical
+      - id: i3
+        label: Ethernet1/2
+        slot: 2
+        type: physical
+      - id: i4
+        label: Ethernet1/3
+        slot: 3
+        type: physical
+  - boot_disk_size: null
+    configuration: |2-
+
+      !Command: show running-config
+      !Running configuration last done at: Tue Jan  9 19:34:08 2024
+      !Time: Tue Jan  9 19:34:08 2024
+
+      version 10.3(1) Bios:version
+      hostname n9kv-4
+      vdc n9kv-4 id 1
+        limit-resource vlan minimum 16 maximum 4094
+        limit-resource vrf minimum 2 maximum 4096
+        limit-resource port-channel minimum 0 maximum 511
+        limit-resource m4route-mem minimum 58 maximum 58
+        limit-resource m6route-mem minimum 8 maximum 8
+
+      feature nxapi
+      cfs eth distribute
+      nv overlay evpn
+      feature ospf
+      feature bgp
+      feature pim
+      feature interface-vlan
+      feature vn-segment-vlan-based
+      feature lacp
+      feature dhcp
+      feature vpc
+      feature lldp
+      feature nv overlay
+      feature ngoam
+      feature telemetry
+
+      no password strength-check
+      username admin password DEVP@ssw0rd  role network-admin
+      username cisco password 5 $5$FBCAFG$RIgkaNam1FRA0mJkWkc4NJ.lXz7rwRP8ks9dtPWW.k4  role network-admin
+      username cisco passphrase  lifetime 99999 warntime 14 gracetime 3
+      ip domain-lookup
+      copp profile strict
+
+      vlan 1,3600
+
+      vrf context management
+        ip name-server 172.16.10.100
+        ip route 0.0.0.0/0 172.16.14.254
+
+      nxapi http port 80
+
+      vpc domain 1
+        peer-switch
+        peer-keepalive destination 172.0.1.203 source 172.0.1.204
+        delay restore 150
+        peer-gateway
+        auto-recovery reload-delay 360
+        ipv6 nd synchronize
+        ip arp synchronize
+
+      interface Vlan3600
+        description VPC-Peer-Link SVI
+        no shutdown
+        mtu 9216
+        no ip redirects
+        ip address 10.4.0.2/30
+        no ipv6 redirects
+        ip ospf network point-to-point
+        ip router ospf UNDERLAY area 0.0.0.0
+        ip pim sparse-mode
+
+      interface port-channel500
+        description "vpc-peer-link n9kv-4--n9kv-3"
+        switchport mode trunk
+        spanning-tree port type network
+        vpc peer-link
+
+      interface Ethernet1/3
+        description "PO 500 (vpc-peer-link) member n9kv-4-Ethernet1/3 to n9kv-3-Ethernet1/3"
+        switchport mode trunk
+        channel-group 500 mode active
+
+      interface mgmt0
+        vrf member management
+        ip address 172.0.1.204/24
+
+      line console
+        exec-timeout 0
+      line vty
+        exec-timeout 0
+      boot nxos bootflash:/nxos64-cs.10.3.1.F.bin
+      no logging console
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n5
+    image_definition: null
+    label: n9kv-4
+    node_definition: nxosv9000
+    ram: null
+    tags: []
+    x: -80
+    y: 400
+    interfaces:
+      - id: i0
+        label: Loopback0
+        type: loopback
+      - id: i1
+        label: mgmt0
+        slot: 0
+        type: physical
+      - id: i2
+        label: Ethernet1/1
+        slot: 1
+        type: physical
+      - id: i3
+        label: Ethernet1/2
+        slot: 2
+        type: physical
+      - id: i4
+        label: Ethernet1/3
+        slot: 3
+        type: physical
+      - id: i5
+        label: Ethernet1/4
+        slot: 4
+        type: physical
+      - id: i6
+        label: Ethernet1/5
+        slot: 5
+        type: physical
+      - id: i7
+        label: Ethernet1/6
+        slot: 6
+        type: physical
+      - id: i8
+        label: Ethernet1/7
+        slot: 7
+        type: physical
+  - boot_disk_size: null
+    configuration: |-
+      #cloud-config
+      hostname: ubuntu-cml
+      manage_etc_hosts: False
+      system_info:
+        default_user:
+          name: cisco
+      password: cisco
+      chpasswd: { expire: False }
+      ssh_pwauth: True
+      ssh_authorized_keys:
+         - ecdsa-sha2-nistp521 AAAAE2VjZHNhLXNoYTItbmlzdHA1MjEAAAAIbmlzdHA1MjEAAACFBAHq28PeSRKuZn/dnuA7SQJsJ0ka0eEnGItNqZdW/5zOhe7AzQ7KYYo0mVGrATXZFFIlRm2vELbh9/tOegzhyyGuuwE4wmhE7r+9/a65A2wuZ6+Wx0X04CwdW1Ityh+Gq/aSv338BuMeyznsfIyVEuGEdbczZMVts/HdnIUAOmOrLQAirQ== dcloud@dcloud
+      runcmd:
+         - ip addr add dev ens2 local 172.16.14.34/24
+         - ip route add to 0.0.0.0/0 dev ens2 via 172.16.14.254
+         - ip addr add dev ens3 local 192.168.103.10/24
+         - ip link set dev ens3 up
+         - ip route add to 192.168.96.0/20 dev ens3 via 192.168.103.254
+         - rm /etc/resolv.conf
+         - echo "nameserver 172.16.10.100" > /etc/resolv.conf
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n6
+    image_definition: null
+    label: ubuntu-1
+    node_definition: ubuntu
+    ram: null
+    tags: []
+    x: -40
+    y: 80
+    interfaces:
+      - id: i0
+        label: ens2
+        slot: 0
+        type: physical
+      - id: i1
+        label: ens3
+        slot: 1
+        type: physical
+  - boot_disk_size: null
+    configuration: |-
+      #cloud-config
+      hostname: ubuntu-cml
+      manage_etc_hosts: False
+      system_info:
+        default_user:
+          name: cisco
+      password: cisco
+      chpasswd: { expire: False }
+      ssh_pwauth: True
+      ssh_authorized_keys:
+         - ecdsa-sha2-nistp521 AAAAE2VjZHNhLXNoYTItbmlzdHA1MjEAAAAIbmlzdHA1MjEAAACFBAHq28PeSRKuZn/dnuA7SQJsJ0ka0eEnGItNqZdW/5zOhe7AzQ7KYYo0mVGrATXZFFIlRm2vELbh9/tOegzhyyGuuwE4wmhE7r+9/a65A2wuZ6+Wx0X04CwdW1Ityh+Gq/aSv338BuMeyznsfIyVEuGEdbczZMVts/HdnIUAOmOrLQAirQ== dcloud@dcloud
+      runcmd:
+         - ip addr add dev ens2 local 172.16.14.33/24
+         - ip route add to 0.0.0.0/0 dev ens2 via 172.16.14.254
+         - rm /etc/resolv.conf
+         - echo "nameserver 172.16.10.100" > /etc/resolv.conf
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n7
+    image_definition: null
+    label: ubuntu-0
+    node_definition: ubuntu
+    ram: null
+    tags: []
+    x: -520
+    y: 400
+    interfaces:
+      - id: i0
+        label: ens2
+        slot: 0
+        type: physical
+      - id: i1
+        label: ens3
+        slot: 1
+        type: physical
+  - boot_disk_size: null
+    configuration: |-
+      #cloud-config
+      hostname: ubuntu-cml
+      manage_etc_hosts: False
+      system_info:
+        default_user:
+          name: cisco
+      password: cisco
+      chpasswd: { expire: False }
+      ssh_pwauth: True
+      ssh_authorized_keys:
+         - ecdsa-sha2-nistp521 AAAAE2VjZHNhLXNoYTItbmlzdHA1MjEAAAAIbmlzdHA1MjEAAACFBAHq28PeSRKuZn/dnuA7SQJsJ0ka0eEnGItNqZdW/5zOhe7AzQ7KYYo0mVGrATXZFFIlRm2vELbh9/tOegzhyyGuuwE4wmhE7r+9/a65A2wuZ6+Wx0X04CwdW1Ityh+Gq/aSv338BuMeyznsfIyVEuGEdbczZMVts/HdnIUAOmOrLQAirQ== dcloud@dcloud
+      runcmd:
+         - ip addr add dev ens2 local 172.16.14.35/24
+         - ip route add to 0.0.0.0/0 dev ens2 via 172.16.14.254
+         - ip addr add dev ens3 local 192.168.104.10/24
+         - ip link set dev ens3 up
+         - ip route add to 192.168.96.0/20 dev ens3 via 192.168.104.254
+         - rm /etc/resolv.conf
+         - echo "nameserver 172.16.10.100" > /etc/resolv.conf
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n8
+    image_definition: null
+    label: ubuntu-2
+    node_definition: ubuntu
+    ram: null
+    tags: []
+    x: -80
+    y: 520
+    interfaces:
+      - id: i0
+        label: ens2
+        slot: 0
+        type: physical
+      - id: i1
+        label: ens3
+        slot: 1
+        type: physical
+links:
+  - id: l0
+    n1: n2
+    n2: n3
+    i1: i0
+    i2: i0
+    conditioning: {}
+    label: ext-conn-0-port<->unmanaged-switch-0-port0
+  - id: l1
+    n1: n3
+    n2: n0
+    i1: i2
+    i2: i1
+    conditioning: {}
+    label: unmanaged-switch-0-port2<->n9kv-1-mgmt0
+  - id: l2
+    n1: n3
+    n2: n1
+    i1: i3
+    i2: i1
+    conditioning: {}
+    label: unmanaged-switch-0-port3<->n9kv-3-mgmt0
+  - id: l3
+    n1: n3
+    n2: n4
+    i1: i4
+    i2: i1
+    conditioning: {}
+    label: unmanaged-switch-0-port4<->n9kv-2-mgmt0
+  - id: l4
+    n1: n3
+    n2: n5
+    i1: i5
+    i2: i1
+    conditioning: {}
+    label: unmanaged-switch-0-port5<->n9kv-4-mgmt0
+  - id: l5
+    n1: n5
+    n2: n0
+    i1: i2
+    i2: i2
+    conditioning: {}
+    label: n9kv-4-Ethernet1/1<->n9kv-1-Ethernet1/1
+  - id: l6
+    n1: n5
+    n2: n4
+    i1: i3
+    i2: i2
+    conditioning: {}
+    label: n9kv-4-Ethernet1/2<->n9kv-2-Ethernet1/1
+  - id: l7
+    n1: n1
+    n2: n0
+    i1: i2
+    i2: i3
+    conditioning: {}
+    label: n9kv-3-Ethernet1/1<->n9kv-1-Ethernet1/2
+  - id: l8
+    n1: n1
+    n2: n4
+    i1: i3
+    i2: i3
+    conditioning: {}
+    label: n9kv-3-Ethernet1/2<->n9kv-2-Ethernet1/2
+  - id: l9
+    n1: n1
+    n2: n5
+    i1: i4
+    i2: i4
+    conditioning: {}
+    label: n9kv-3-Ethernet1/3<->n9kv-4-Ethernet1/3
+  - id: l10
+    n1: n6
+    n2: n3
+    i1: i0
+    i2: i6
+    conditioning: {}
+    label: ubuntu-1-ens2<->unmanaged-switch-0-port6
+  - id: l11
+    n1: n7
+    n2: n3
+    i1: i0
+    i2: i1
+    conditioning: {}
+    label: ubuntu-0-ens2<->unmanaged-switch-0-port1
+  - id: l12
+    n1: n6
+    n2: n1
+    i1: i1
+    i2: i6
+    conditioning: {}
+    label: ubuntu-1-ens3<->n9kv-3-Ethernet1/5
+  - id: l13
+    n1: n8
+    n2: n3
+    i1: i0
+    i2: i7
+    conditioning: {}
+    label: ubuntu-2-ens2<->unmanaged-switch-0-port7
+  - id: l14
+    n1: n8
+    n2: n5
+    i1: i1
+    i2: i6
+    conditioning: {}
+    label: ubuntu-2-ens3<->n9kv-4-Ethernet1/5
+lab:
+  description: ''
+  notes: ''
+  title: NXOS-VXLAN-EVPN
+  version: 0.2.1
