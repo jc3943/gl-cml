@@ -1,8 +1,8 @@
 deviceName,deviceIp,deviceType,authGroup,authGroupName,authGroupUser,authGroupPw,nedId,serialNumber,platform,version,role,vpcId
-n9kv-1,172.16.14.101,nxos,nxos-creds,nxos-creds,admin,REVWUEBzc3cwcmQ=,cisco-nx-cli-5.25,9NE1KNK7R33,N9K-C9300v,10.3(1),spine,NA
-n9kv-2,172.16.14.102,nxos,nxos-creds,,,,cisco-nx-cli-5.25,98JYBJ7QYRY,N9K-C9300v,10.3(1),spine,NA
-n9kv-3,172.16.14.103,nxos,nxos-creds,,,,cisco-nx-cli-5.25,97S6YY8EWQO,N9K-C9300v,10.3(1),leaf,101
-n9kv-4,172.16.14.104,nxos,nxos-creds,,,,cisco-nx-cli-5.25,9RWDXGARCDO,N9K-C9300v,10.3(1),leaf,101
+n9kv-1,172.0.1.101,nxos,nxos-creds,nxos-creds,admin,REVWUEBzc3cwcmQ=,cisco-nx-cli-5.25,9NE1KNK7R33,N9K-C9300v,10.3(1),spine,NA
+n9kv-2,172.0.1.102,nxos,nxos-creds,,,,cisco-nx-cli-5.25,98JYBJ7QYRY,N9K-C9300v,10.3(1),spine,NA
+n9kv-3,172.0.1.103,nxos,nxos-creds,,,,cisco-nx-cli-5.25,97S6YY8EWQO,N9K-C9300v,10.3(1),leaf,101
+n9kv-4,172.0.1.104,nxos,nxos-creds,,,,cisco-nx-cli-5.25,9RWDXGARCDO,N9K-C9300v,10.3(1),leaf,101
 sandbox-apic-01,172.20.104.7,aci,apic-creds,apic-creds,admin,REVWUEBzc3cwcmQ=,cisco-apicdc-gen-3.19,,,,,
 apic-sim,172.0.1.101,aci,apic-creds,,,,cisco-apicdc-gen-3.19,,,,,
 dev-fmc,172.16.14.89,fmc,fmc-creds,fmc-creds,admin,REVWUEBzc3cwcmQ=,cisco-fmc-gen-1.6,,,,,

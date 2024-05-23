@@ -73,7 +73,7 @@ nodes:
 
       vrf context management
         ip name-server 172.16.10.100
-        ip route 0.0.0.0/0 172.16.14.254
+        ip route 0.0.0.0/0 172.0.1.254
       ngoam install acl
 
       nxapi http port 80
@@ -162,7 +162,7 @@ nodes:
 
       vrf context management
         ip name-server 172.16.10.100
-        ip route 0.0.0.0/0 172.16.14.254
+        ip route 0.0.0.0/0 172.0.1.254
 
       vpc domain 1
         peer-switch
@@ -359,7 +359,7 @@ nodes:
 
       vrf context management
         ip name-server 172.16.10.100
-        ip route 0.0.0.0/0 172.16.14.254
+        ip route 0.0.0.0/0 172.0.1.254
 
       interface mgmt0
         vrf member management
@@ -446,7 +446,7 @@ nodes:
 
       vrf context management
         ip name-server 172.16.10.100
-        ip route 0.0.0.0/0 172.16.14.254
+        ip route 0.0.0.0/0 172.0.1.254
 
       nxapi http port 80
 
@@ -553,8 +553,8 @@ nodes:
       ssh_authorized_keys:
          - ecdsa-sha2-nistp521 AAAAE2VjZHNhLXNoYTItbmlzdHA1MjEAAAAIbmlzdHA1MjEAAACFBAHq28PeSRKuZn/dnuA7SQJsJ0ka0eEnGItNqZdW/5zOhe7AzQ7KYYo0mVGrATXZFFIlRm2vELbh9/tOegzhyyGuuwE4wmhE7r+9/a65A2wuZ6+Wx0X04CwdW1Ityh+Gq/aSv338BuMeyznsfIyVEuGEdbczZMVts/HdnIUAOmOrLQAirQ== dcloud@dcloud
       runcmd:
-         - ip addr add dev ens2 local 172.16.14.34/24
-         - ip route add to 0.0.0.0/0 dev ens2 via 172.16.14.254
+         - ip addr add dev ens2 local 172.0.1.34/24
+         - ip route add to 0.0.0.0/0 dev ens2 via 172.0.1.254
          - ip addr add dev ens3 local 192.168.103.10/24
          - ip link set dev ens3 up
          - ip route add to 192.168.96.0/20 dev ens3 via 192.168.103.254
@@ -595,8 +595,8 @@ nodes:
       ssh_authorized_keys:
          - ecdsa-sha2-nistp521 AAAAE2VjZHNhLXNoYTItbmlzdHA1MjEAAAAIbmlzdHA1MjEAAACFBAHq28PeSRKuZn/dnuA7SQJsJ0ka0eEnGItNqZdW/5zOhe7AzQ7KYYo0mVGrATXZFFIlRm2vELbh9/tOegzhyyGuuwE4wmhE7r+9/a65A2wuZ6+Wx0X04CwdW1Ityh+Gq/aSv338BuMeyznsfIyVEuGEdbczZMVts/HdnIUAOmOrLQAirQ== dcloud@dcloud
       runcmd:
-         - ip addr add dev ens2 local 172.16.14.33/24
-         - ip route add to 0.0.0.0/0 dev ens2 via 172.16.14.254
+         - ip addr add dev ens2 local 172.0.1.33/24
+         - ip route add to 0.0.0.0/0 dev ens2 via 172.0.1.254
          - rm /etc/resolv.conf
          - echo "nameserver 172.16.10.100" > /etc/resolv.conf
     cpu_limit: null
@@ -634,8 +634,8 @@ nodes:
       ssh_authorized_keys:
          - ecdsa-sha2-nistp521 AAAAE2VjZHNhLXNoYTItbmlzdHA1MjEAAAAIbmlzdHA1MjEAAACFBAHq28PeSRKuZn/dnuA7SQJsJ0ka0eEnGItNqZdW/5zOhe7AzQ7KYYo0mVGrATXZFFIlRm2vELbh9/tOegzhyyGuuwE4wmhE7r+9/a65A2wuZ6+Wx0X04CwdW1Ityh+Gq/aSv338BuMeyznsfIyVEuGEdbczZMVts/HdnIUAOmOrLQAirQ== dcloud@dcloud
       runcmd:
-         - ip addr add dev ens2 local 172.16.14.35/24
-         - ip route add to 0.0.0.0/0 dev ens2 via 172.16.14.254
+         - ip addr add dev ens2 local 172.0.1.35/24
+         - ip route add to 0.0.0.0/0 dev ens2 via 172.0.1.254
          - ip addr add dev ens3 local 192.168.104.10/24
          - ip link set dev ens3 up
          - ip route add to 192.168.96.0/20 dev ens3 via 192.168.104.254

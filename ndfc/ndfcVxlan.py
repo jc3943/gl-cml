@@ -48,9 +48,9 @@ def buildNdfcFabric(fabric_type, fabric, seedfile, port_defs):
     fabPayload = {
         "FABRIC_NAME": "cml-nxos-vxlan",
         "BGP_AS": "65100",
-        "EXTRA_CONF_TOR": "vrf context management\n        ip route 0.0.0.0/0 172.16.14.254",
-        "EXTRA_CONF_LEAF": "vrf context management\n        ip route 0.0.0.0/0 172.16.14.254",
-        "EXTRA_CONF_SPINE": "vrf context management\n        ip route 0.0.0.0/0 172.16.14.254",
+        "EXTRA_CONF_TOR": "vrf context management\n        ip route 0.0.0.0/0 172.0.1.254",
+        "EXTRA_CONF_LEAF": "vrf context management\n        ip route 0.0.0.0/0 172.0.1.254",
+        "EXTRA_CONF_SPINE": "vrf context management\n        ip route 0.0.0.0/0 172.0.1.254",
         "VRF_LITE_AUTOCONFIG": "Back2Back&ToExternal",
         "FABRIC_INTERFACE_TYPE": "p2p",
         "SUBNET_TARGET_MASK": "31",

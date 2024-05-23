@@ -5,7 +5,7 @@
 - hosts: localhost
   gather_facts: no
   vars:
-    url: http://172.16.14.33:8080/jsonrpc
+    url: http://172.0.1.33:8080/jsonrpc
 
   tasks:
   - read_csv:
