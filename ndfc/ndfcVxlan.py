@@ -23,6 +23,10 @@ headers = {
     "Accept": "application/json",
     "Content-Type": "application/json"
 }
+headersStr = {
+    "Accept": "application/json",
+    "Content-Type": "text/plain"
+}
 
 @click.command()
 @click.option("--fabric_type", type=click.Choice(['Easy_Fabric', 'Easy_Fabric_Classic']), help='[default: Easy_Fabric]',show_default=True, required=False)
@@ -172,7 +176,7 @@ def buildNdfcFabric(fabric_type, fabric, seedfile, port_defs):
             #vpcPayload = {"peerOneId":peer1Id,"peerTwoId":peer2Id,"useVirtualPeerlink":False}
             vpcPayload = {"peerOneId":"9X9F395JCVC","peerTwoId":"949JZ1IIXKW","useVirtualPeerlink":False}
             print(vpcPayload)
-            vpcCreateResponse = requests.post(vpcCreateUrl, headers=headers, json=vpcPayload, verify=False)
+            vpcCreateResponse = requests.post(vpcCreateUrl, headers=headersStr, json=vpcPayload, verify=False)
             print("Create vpc status: ", vpcCreateResponse.text)
                     
 
