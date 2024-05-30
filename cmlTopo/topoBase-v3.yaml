@@ -592,7 +592,7 @@ nodes:
       ssh_authorized_keys:
          - ecdsa-sha2-nistp521 AAAAE2VjZHNhLXNoYTItbmlzdHA1MjEAAAAIbmlzdHA1MjEAAACFBAHq28PeSRKuZn/dnuA7SQJsJ0ka0eEnGItNqZdW/5zOhe7AzQ7KYYo0mVGrATXZFFIlRm2vELbh9/tOegzhyyGuuwE4wmhE7r+9/a65A2wuZ6+Wx0X04CwdW1Ityh+Gq/aSv338BuMeyznsfIyVEuGEdbczZMVts/HdnIUAOmOrLQAirQ== dcloud@dcloud
       runcmd:
-         - ip addr add dev ens2 local 172.16.14.33/24
+         - ip addr add dev ens2 local 172.16.14.36/24
          - ip route add to 0.0.0.0/0 dev ens2 via 172.16.14.254
          - rm /etc/resolv.conf
          - echo "nameserver 172.16.10.100" > /etc/resolv.conf
@@ -631,7 +631,7 @@ nodes:
       ssh_authorized_keys:
          - ecdsa-sha2-nistp521 AAAAE2VjZHNhLXNoYTItbmlzdHA1MjEAAAAIbmlzdHA1MjEAAACFBAHq28PeSRKuZn/dnuA7SQJsJ0ka0eEnGItNqZdW/5zOhe7AzQ7KYYo0mVGrATXZFFIlRm2vELbh9/tOegzhyyGuuwE4wmhE7r+9/a65A2wuZ6+Wx0X04CwdW1Ityh+Gq/aSv338BuMeyznsfIyVEuGEdbczZMVts/HdnIUAOmOrLQAirQ== dcloud@dcloud
       runcmd:
-         - ip addr add dev ens2 local 172.16.14.33/24
+         - ip addr add dev ens2 local 172.16.14.36/24
          - ip route add to 0.0.0.0/0 dev ens2 via 172.16.14.254
          - rm /etc/resolv.conf
          - echo "nameserver 172.16.10.100" > /etc/resolv.conf
