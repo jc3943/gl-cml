@@ -152,28 +152,28 @@ def buildNdfcFabric(fabric_type, fabric, seedfile, port_defs):
     #Create VPC Pair from lear switches
     #https://172.16.14.96/appcenter/cisco/ndfc/api/v1/lan-fabric/rest/vpcpair
     #{"peerOneId":"9X9F395JCVC","peerTwoId":"949JZ1IIXKW","useVirtualPeerlink":false}
-    # vpcCreateUrl = API_BASE_URL + "/appcenter/cisco/ndfc/api/v1/lan-fabric/rest/vpcpair"
-    # vpcList = []
-    # for i in range(len(csvDict)):
-    #     if (csvDict[i]['vpcId'] != "NA" and csvDict[i]['deviceType'] == "nxos" and csvDict[i]['deviceName'] not in vpcList):
-    #         peer1Name = csvDict[i]['deviceName']
-    #         vpcList.append(peer1Name)
-    #         print(peer1Name)
-    #         for k in range(len(switchInfoJson)):
-    #             if (csvDict[i]['deviceIp'] == switchInfoJson[k]['ipAddress']):
-    #                 peer1Id = switchInfoJson[k]['serialNumber']
-    #                 print(peer1Id)
-    #         for j in range(len(csvDict)):
-    #             if (csvDict[j]['deviceName'] != peer1Name and csvDict[j]['vpcId'] == csvDict[i]['vpcId']):
-    #                 peer2Name = csvDict[j]['deviceName']
-    #                 for l in range(len(switchInfoJson)):
-    #                     if (csvDict[j]['deviceIp'] == switchInfoJson[l]['ipAddress']):
-    #                         peer2Id = switchInfoJson[l]['serialNumber']
-    #         #vpcPayload = {"peerOneId":peer1Id,"peerTwoId":peer2Id,"useVirtualPeerlink":False}
-    #         vpcPayload = {"peerOneId":"9X9F395JCVC","peerTwoId":"949JZ1IIXKW","useVirtualPeerlink":False}
-    #         print(vpcPayload)
-    #         vpcCreateResponse = requests.post(vpcCreateUrl, headers=headers, json=vpcPayload, verify=False)
-    #         print("Create vpc status: ", vpcCreateResponse.text)
+    vpcCreateUrl = API_BASE_URL + "/appcenter/cisco/ndfc/api/v1/lan-fabric/rest/vpcpair"
+    vpcList = []
+    for i in range(len(csvDict)):
+        if (csvDict[i]['vpcId'] != "NA" and csvDict[i]['deviceType'] == "nxos" and csvDict[i]['deviceName'] not in vpcList):
+            peer1Name = csvDict[i]['deviceName']
+            vpcList.append(peer1Name)
+            print(peer1Name)
+            for k in range(len(switchInfoJson)):
+                if (csvDict[i]['deviceIp'] == switchInfoJson[k]['ipAddress']):
+                    peer1Id = switchInfoJson[k]['serialNumber']
+                    print(peer1Id)
+            for j in range(len(csvDict)):
+                if (csvDict[j]['deviceName'] != peer1Name and csvDict[j]['vpcId'] == csvDict[i]['vpcId']):
+                    peer2Name = csvDict[j]['deviceName']
+                    for l in range(len(switchInfoJson)):
+                        if (csvDict[j]['deviceIp'] == switchInfoJson[l]['ipAddress']):
+                            peer2Id = switchInfoJson[l]['serialNumber']
+            #vpcPayload = {"peerOneId":peer1Id,"peerTwoId":peer2Id,"useVirtualPeerlink":False}
+            vpcPayload = {"peerOneId":"9X9F395JCVC","peerTwoId":"949JZ1IIXKW","useVirtualPeerlink":False}
+            print(vpcPayload)
+            vpcCreateResponse = requests.post(vpcCreateUrl, headers=headers, json=vpcPayload, verify=False)
+            print("Create vpc status: ", vpcCreateResponse.text)
                     
 
 
