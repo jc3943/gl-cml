@@ -20,7 +20,7 @@ prepUbuntuVm:
   stage: prepUbuntuVm
   script:
     - ansible-playbook -i creds/ubuntu-inv nso/ubuntuDocker.yml -u cisco
-    - sleep 120
+    - sleep 300
   only:
     - master
 
