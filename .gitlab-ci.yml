@@ -4,7 +4,7 @@ stages:
   - addDevicesNso
   - ndfcCreateFabric
 
-image: jcomer3943/ubuntu-cml:latest
+image: jcomer3943/ubuntu:flask
 
 variables:
   varPath: vars/$CI_COMMIT_REF_NAME
