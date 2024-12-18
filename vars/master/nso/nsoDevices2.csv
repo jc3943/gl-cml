@@ -3,9 +3,6 @@ spine-101,172.16.14.101,nxos,nxos-creds,nxos-creds,admin,REVWUEBzc3cwcmQ=,cisco-
 spine-102,172.16.14.102,nxos,nxos-creds,,,,cisco-nx-cli-5.25,98JYBJ7QYRY,N9K-C9300v,10.3(1),spine,NA
 leaf-1001,172.16.14.113,nxos,nxos-creds,,,,cisco-nx-cli-5.25,97S6YY8EWQO,N9K-C9300v,10.3(1),leaf,101
 leaf-1002,172.16.14.104,nxos,nxos-creds,,,,cisco-nx-cli-5.25,9RWDXGARCDO,N9K-C9300v,10.3(1),leaf,101
-leaf-1003,172.16.14.114,nxos,nxos-creds,,,,cisco-nx-cli-5.25,9R2VMZZEUQ7,N9K-C9300v,10.3(1),leaf,NA
-leaf-1005,172.16.14.116,nxos,nxos-creds,,,,cisco-nx-cli-5.25,9EP28QB3EGS,N9K-C9300v,10.3(1),leaf,102
-leaf-1006,172.16.14.117,nxos,nxos-creds,,,,cisco-nx-cli-5.25,9WPLGSA4ZM9,N9K-C9300v,10.3(1),leaf,102
 sandbox-apic-01,172.20.104.7,aci,apic-creds,apic-creds,admin,REVWUEBzc3cwcmQ=,cisco-apicdc-gen-3.19,,,,,
 apic-sim,172.0.1.101,aci,apic-creds,,,,cisco-apicdc-gen-3.19,,,,,
 dev-fmc,172.16.14.89,fmc,fmc-creds,fmc-creds,admin,REVWUEBzc3cwcmQ=,cisco-fmc-gen-1.6,,,,,
