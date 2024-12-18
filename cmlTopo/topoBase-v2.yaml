@@ -166,7 +166,7 @@ nodes:
 
       vpc domain 1
         peer-switch
-        peer-keepalive destination 172.16.14.104 source 172.16.14.103
+        peer-keepalive destination 172.16.14.104 source 172.16.14.113
         delay restore 150
         peer-gateway
         auto-recovery reload-delay 360
@@ -201,7 +201,7 @@ nodes:
 
       interface mgmt0
         vrf member management
-        ip address 172.16.14.103/24
+        ip address 172.16.14.113/24
 
       line console
         exec-timeout 0
@@ -452,7 +452,7 @@ nodes:
 
       vpc domain 1
         peer-switch
-        peer-keepalive destination 172.16.14.103 source 172.16.14.104
+        peer-keepalive destination 172.16.14.113 source 172.16.14.104
         delay restore 150
         peer-gateway
         auto-recovery reload-delay 360

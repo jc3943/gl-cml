@@ -1,3 +1,5 @@
 name,description,speed,intfType,cdpPol,lldpPol,mcpPol,monPol,stormCtlPol,lacpPol,aep,interfaceProfile,node,interface,blkNum,interactions
-n9kv-3,leaf-3,10G,access,CDP_ON,LLDP_ON,MCP_ON,Nflow_Mon,bcast-mcast-storm,NA,Infrastructure,SBOX-Leaf-201_intProf,3,Ethernet1/5,block2,policyGrps
-n9kv-4,leaf-4,10G,access,CDP_ON,LLDP_ON,MCP_ON,Nflow_Mon,bcast-mcast-storm,NA,Infrastructure,SBOX-Leaf-201_intProf,4,Ethernet1/5,block3,interfaceProfiles
+leaf-1001,leaf-1001,10G,int_trunk_classic,CDP_ON,LLDP_ON,MCP_ON,Nflow_Mon,bcast-mcast-storm,NA,Infrastructure,SBOX-Leaf-201_intProf,3,Ethernet1/4,block2,policyGrps
+leaf-1002,leaf-1002,10G,int_trunk_classic,CDP_ON,LLDP_ON,MCP_ON,Nflow_Mon,bcast-mcast-storm,NA,Infrastructure,SBOX-Leaf-201_intProf,4,Ethernet1/4,block3,interfaceProfiles
+leaf-1005,leaf-1005,10G,int_routed_host,CDP_ON,LLDP_ON,MCP_ON,Nflow_Mon,bcast-mcast-storm,NA,Infrastructure,SBOX-Leaf-201_intProf,4,Ethernet1/3,block3,interfaceProfiles
+leaf-1006,leaf-1006,10G,int_routed_host,CDP_ON,LLDP_ON,MCP_ON,Nflow_Mon,bcast-mcast-storm,NA,Infrastructure,SBOX-Leaf-201_intProf,4,Ethernet1/3,block3,interfaceProfiles

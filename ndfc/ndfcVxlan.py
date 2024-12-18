@@ -55,21 +55,24 @@ def buildNdfcFabric(fabric_type, fabric, seedfile, port_defs):
     # Temporary -- REMOVE
 
     #Create Fabric of Type fabric_type in NDFC
-    fabCreateUrl = API_BASE_URL + f'/appcenter/cisco/ndfc/api/v1/lan-fabric/rest/control/fabrics/{fabric}/{fabric_type}'
-    fabPayload = {
-        "FABRIC_NAME": "cml-nxos-vxlan",
-        "BGP_AS": "65100",
-        "EXTRA_CONF_TOR": "vrf context management\n        ip route 0.0.0.0/0 172.16.14.254",
-        "EXTRA_CONF_LEAF": "vrf context management\n        ip route 0.0.0.0/0 172.16.14.254",
-        "EXTRA_CONF_SPINE": "vrf context management\n        ip route 0.0.0.0/0 172.16.14.254",
-        "VRF_LITE_AUTOCONFIG": "Back2Back&ToExternal",
-        "FABRIC_INTERFACE_TYPE": "p2p",
-        "SUBNET_TARGET_MASK": "31",
-        "RP_LB_ID": "251",
-        "GRFIELD_DEBUG_FLAG": "Enable"
-    }
-    createFabResponse = requests.post(fabCreateUrl, headers=headers, json=fabPayload, verify=False)
-    print("Fabric Create Status: ", createFabResponse)
+    fabListUrl = API_BASE_URL + f'/appcenter/cisco/ndfc/api/v1/lan-fabric/rest/control/fabrics'
+    getFabList = requests.get(fabListUrl, headers=headers, verify=False).json()
+    print(getFabList)
+    # fabCreateUrl = API_BASE_URL + f'/appcenter/cisco/ndfc/api/v1/lan-fabric/rest/control/fabrics/{fabric}/{fabric_type}'
+    # fabPayload = {
+    #     "FABRIC_NAME": "cml-nxos-vxlan",
+    #     "BGP_AS": "65100",
+    #     "EXTRA_CONF_TOR": "vrf context management\n        ip route 0.0.0.0/0 172.16.14.254",
+    #     "EXTRA_CONF_LEAF": "vrf context management\n        ip route 0.0.0.0/0 172.16.14.254",
+    #     "EXTRA_CONF_SPINE": "vrf context management\n        ip route 0.0.0.0/0 172.16.14.254",
+    #     "VRF_LITE_AUTOCONFIG": "Back2Back&ToExternal",
+    #     "FABRIC_INTERFACE_TYPE": "p2p",
+    #     "SUBNET_TARGET_MASK": "31",
+    #     "RP_LB_ID": "251",
+    #     "GRFIELD_DEBUG_FLAG": "Enable"
+    # }
+    # createFabResponse = requests.post(fabCreateUrl, headers=headers, json=fabPayload, verify=False)
+    # print("Fabric Create Status: ", createFabResponse)
 
     #Read data from seed file and discover switches
     with open(seedfile, 'r') as csv_file:
@@ -88,10 +91,10 @@ def buildNdfcFabric(fabric_type, fabric, seedfile, port_defs):
             switchList.append(switchDict)
             seedList.append(csvDict[i]['deviceIp'])
     seedString = ", ".join(str(x) for x in seedList)
-    switchPayload = {"seedIP":seedString, "username":nxosusername, "password":nxospassword, "preserveConfig":False, "switches":switchList}
-    addSwitchUrl = API_BASE_URL + f'/appcenter/cisco/ndfc/api/v1/lan-fabric/rest/control/fabrics/{fabric}/inventory/discover'
-    addSwitchResponse = requests.post( addSwitchUrl, headers=headers, json=switchPayload, verify=False)
-    print("Switch Add Status: " + addSwitchResponse.text)
+    # switchPayload = {"seedIP":seedString, "username":nxosusername, "password":nxospassword, "preserveConfig":False, "switches":switchList}
+    # addSwitchUrl = API_BASE_URL + f'/appcenter/cisco/ndfc/api/v1/lan-fabric/rest/control/fabrics/{fabric}/inventory/discover'
+    # addSwitchResponse = requests.post( addSwitchUrl, headers=headers, json=switchPayload, verify=False)
+    # print("Switch Add Status: " + addSwitchResponse.text)
 
     #routine to get switch serial numbers from ndfc (in CML, they are dynamically generated) and define switch roles
     switchInfoUrl = API_BASE_URL + f'/appcenter/cisco/ndfc/api/v1/lan-fabric/rest/control/fabrics/{fabric}/inventory/switchesByFabric'
@@ -125,7 +128,7 @@ def buildNdfcFabric(fabric_type, fabric, seedfile, port_defs):
             if (switchSerialList[k]['host'] == portsDict[i]['name'] and portsDict[i]['intfType'] == "access"):
                 accessInterfaces = []
                 accessIntPayload = {
-                    "policy": "int_access_host",
+                    "policy": portsDict[i]['intfType'],
                     "interfaces": [
                         {
                             "serialNumber": switchSerialList[k]['serialNumber'],
